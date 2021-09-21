@@ -1,0 +1,130 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+:root {
+    --dark: #000;
+    --highlight: #ff6666;
+    --light: #f0f0f0;
+    /*== Colores ==*/
+    --first-color: #272a3a;
+    --first-color-light: #8a8eaa;
+    --first-color-lighten: #f8f8fc;
+
+    /*== Fuente y Tipografía ==*/
+    --body-font: "Ubuntu", sans-serif;
+    --normal-font-size: 1rem;
+    --info-font-size: 4rem;
+    --smaller-font-size: 0.813rem;
+}
+
+.tabs {
+    max-width: 100%;
+    padding: 10px;
+}
+.tabs__button-group {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+.tabs__toggle {
+    appearance: none;
+    background-color: var(--light);
+    border: 1px solid var(--light);
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.tabs__toggle.active {
+    background-color: var(--highlight);
+    border: 1px solid var(--highlight);
+}
+.tabs__tab-panel {
+    display: none;
+}
+.tabs__tab-panel.active {
+    display: block;
+}
+
+
+
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    color: var(--first-color);
+    font-size: var(--info-font-size);
+    line-height: 2rem;
+}
+
+p {
+    font-size: var(--normal-font-size);
+    color: var(--first-color-light);
+    line-height: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 80px;
+    height: auto;
+}
+
+/*==== ARRASTRAR Y SOLTAR ====*/
+.drop,
+.drop__container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.drop {
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.drop__container {
+    row-gap: 1rem;
+    width: 100%;
+}
+
+.drop__info {
+    text-align: center;
+}
+
+.drop__card,
+.drop__data {
+    display: flex;
+    align-items: center;
+}
+
+.drop__card {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+    background-color: var(--first-color-lighten);
+    box-shadow: 4px 4px 16px #e1e1e1, -2px -2px 16px #fff;
+}
+
+.drop__img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.drop__name {
+    font-size: var(--normal-font-size);
+    color: var(--first-color);
+    font-weight: 500;
+}
+
+

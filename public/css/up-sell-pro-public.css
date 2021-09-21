@@ -1,0 +1,25 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.show-cart li {
+    display: flex;
+}
+.card.related-product{
+    margin-bottom: 20px;
+    opacity: 1;
+}
+.card.related-product.disabled{
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+.card-img-top {
+    width: 200px;
+    height: 200px;
+    align-self: center;
+}
+
+.product .row {
+    width: 100%;
+}

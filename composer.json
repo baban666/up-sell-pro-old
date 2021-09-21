@@ -1,0 +1,15 @@
+{
+    "name": "vladi/up-sell-pro",
+    "authors": [
+        {
+            "name": "VladimirVeraksa",
+            "email": "49755858+baban666@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "": "app"
+        }
+    }
+}
