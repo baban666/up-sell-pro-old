@@ -27,6 +27,7 @@ use classes\exopite\UpSellProSettings;
 use classes\helpers\UpSellProHelper;
 use classes\views\UpSellProViewsEmail;
 use classes\views\UpSellProViewsOrder;
+use classes\views\UpSellProViewsPopUp;
 use classes\views\UpSellProViewsProduct;
 use classes\views\UpSellProViewsProvider;
 
@@ -167,8 +168,8 @@ class Up_Sell_Pro {
 		$dataProvider = new UpSellProDataProvider($allSettings, $helper, $providers);
 
 		$views = [
-			//'pop'          => 'new UpSellIncreaseRelationsTags($allSettings, $helper)',
-			'product'    => new UpSellProViewsProduct($allSettings, $helper, $dataProvider),
+			'pop'          => new UpSellProViewsPopUp($allSettings, $helper, $dataProvider),
+			'product'      => new UpSellProViewsProduct($allSettings, $helper, $dataProvider),
 			//'cart'        => 'new UpSellIncreaseRelationsViewed($allSettings, $helper)',
 			'email'        => new UpSellProViewsEmail($allSettings, $helper, $dataProvider),
 			'order'        => new UpSellProViewsOrder($allSettings, $helper, $dataProvider),

@@ -96,7 +96,7 @@ class Up_Sell_Pro_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/up-sell-pro-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/up-sell-pro-public.js', array( 'jquery', 'popupS' ), $this->version, true );
 
 	}
 

@@ -37,6 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'UP_SELL_PRO_VERSION', '1.0.0' );
 define( 'UP_SELL_PRO_ROOT', plugin_dir_path( __FILE__ ) );
+define( 'UP_SELL_PRO_URL', plugin_dir_url( __FILE__ ) );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-up-sell-pro-activator.php
