@@ -213,4 +213,9 @@ class UpSellProHelper {
 
 		return $markup;
 	}
+
+	public function ddAjax($value){
+		error_log( print_r($value, true) );
+	}
+
 }

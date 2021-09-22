@@ -111,69 +111,46 @@
 		}
 
 
-// pop up
 
-		// popupS.window({
-		// 	mode: 'alert',
-		// 	title: 'Title',
-		// 	content : '<h1>hhhhhhhhhhh</h1>' ,
-		// 	className : 'additionalClass',  // for additional styling, gets append on every popup div
-		// 	placeholder : 'Input Text',     // only available for mode: 'prompt'
-		// 	onOpen: function(){
-		// 		console.log('onOpen')
-		// 	},      // gets called when popup is opened
-		// 	onSubmit: function(val){
-		// 		console.log('Submit')
-		// 	}, // gets called when submitted. val as an paramater for prompts
-		// 	onClose: function(){
-		// 		console.log('onClose')
-		// 	}      // gets called when popup is closed
-		// });
+		const popUpShow = (id) =>{
+			console.log('formData',id)
+			var jqXHR = jQuery.post(
+				upSellPro.ajaxurl,
+				{
+					action: 'popUpResponse',
+					nonce: upSellPro.nonce,
+					id: id
+				}
+			);
 
+// Обработка успешного запроса
+			jqXHR.done(function (responce) {
+				console.log('Успех', responce, 'success');
 
+				popupS.window({
+					mode: 'alert',
+					title: 'Title',
+					content : responce ,
+					className : 'additionalClass',  // for additional styling, gets append on every popup div
+					placeholder : 'Input Text',     // only available for mode: 'prompt'
+					onOpen: function(){
+						console.log('onOpen')
+					},      // gets called when popup is opened
+					onSubmit: function(val){
+						console.log('Submit')
+					}, // gets called when submitted. val as an paramater for prompts
+					onClose: function(){
+						console.log('onClose')
+					}      // gets called when popup is closed
+				});
 
+			});
 
-
-// https://quadlayers.com/woocommerce-ajax-add-to-cart/
-// https://quadmenu.com/add-to-cart-with-woocommerce-and-ajax-step-by-step/
-
-		// $('.single_add_to_cart_button').on('click', function(e){
-		// 	e.preventDefault();
-		// 	var $thisbutton = $(this),
-		// 		$form = $thisbutton.closest('form.cart'),
-		// 		id = $thisbutton.val(),
-		// 		product_qty = $form.find('input[name=quantity]').val() || 1,
-		// 		product_id = $form.find('input[name=product_id]').val() || id,
-		// 		variation_id = $form.find('input[name=variation_id]').val() || 0;
-		// 	var data = {
-		// 		action: 'ql_woocommerce_ajax_add_to_cart',
-		// 		product_id: product_id,
-		// 		product_sku: '',
-		// 		quantity: product_qty,
-		// 		variation_id: variation_id,
-		// 	};
-		// 	$.ajax({
-		// 		type: 'post',
-		// 		url: wc_add_to_cart_params.ajax_url,
-		// 		data: data,
-		// 		beforeSend: function (response) {
-		// 			$thisbutton.removeClass('added').addClass('loading');
-		// 		},
-		// 		complete: function (response) {
-		// 			$thisbutton.addClass('added').removeClass('loading');
-		// 		},
-		// 		success: function (response) {
-		// 			if (response.error & response.product_url) {
-		// 				window.location = response.product_url;
-		// 				return;
-		// 			} else {
-		// 				$(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, $thisbutton]);
-		// 			}
-		// 		},
-		// 	});
-		// });
-
-
+// Обработка запроса с ошибкой
+			jqXHR.fail(function (responce) {
+				console.log('Ошибка', responce.responseText, 'error');
+			});
+		}
 
 //https://www.divikingdom.com/ajax-add-to-cart-woocommerce-product-archive/
 		jQuery(function($){
@@ -190,6 +167,7 @@
 
 				var formFields = form.find('input:not([name="product_id"]), select, button, textarea');
 
+				var id = null;
 				// create the form data array
 				var formData = [];
 				formFields.each(function(i, field){
@@ -204,6 +182,7 @@
 						if(fieldName == 'add-to-cart'){
 							fieldName = 'product_id';
 							fieldValue = form.find('input[name=variation_id]').val() || fieldValue;
+							id = fieldValue;
 						}
 
 						// if the fiels is a checkbox/radio and is not checked, skip it
@@ -242,7 +221,6 @@
 					data: formData,
 					success: function(response){
 
-						console.log(response)
 						if(!response){
 							return;
 						}
@@ -259,6 +237,8 @@
 						}
 
 						$(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, button]);
+
+						popUpShow(id)
 					},
 					complete: function(){
 						form.unblock();
@@ -269,12 +249,6 @@
 
 			});
 		});
-
-
-
-
-
-
 
 	});
 
