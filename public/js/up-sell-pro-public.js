@@ -111,143 +111,124 @@
 		}
 
 
-
-		const popUpShow = (id) =>{
-			console.log('formData',id)
-			var jqXHR = jQuery.post(
-				upSellPro.ajaxurl,
-				{
-					action: 'popUpResponse',
-					nonce: upSellPro.nonce,
-					id: id
-				}
-			);
-
-// Обработка успешного запроса
-			jqXHR.done(function (responce) {
-				console.log('Успех', responce, 'success');
-
-				popupS.window({
-					mode: 'alert',
-					title: 'Title',
-					content : responce ,
-					className : 'additionalClass',  // for additional styling, gets append on every popup div
-					placeholder : 'Input Text',     // only available for mode: 'prompt'
-					onOpen: function(){
-						console.log('onOpen')
-					},      // gets called when popup is opened
-					onSubmit: function(val){
-						console.log('Submit')
-					}, // gets called when submitted. val as an paramater for prompts
-					onClose: function(){
-						console.log('onClose')
-					}      // gets called when popup is closed
-				});
-
-			});
-
-// Обработка запроса с ошибкой
-			jqXHR.fail(function (responce) {
-				console.log('Ошибка', responce.responseText, 'error');
+// Pop up Ajax button
+		const popUpShow = (data) =>{
+			popupS.window({
+				mode: 'modal',
+				title: 'Title',
+				content : data ,
+				className : 'additionalClass',  // for additional styling, gets append on every popup div
+				placeholder : 'Input Text',     // only available for mode: 'prompt'
+				onOpen: function(){
+					console.log('onOpen')
+				},      // gets called when popup is opened
+				onSubmit: function(val){
+					console.log('Submit')
+				}, // gets called when submitted. val as an paramater for prompts
+				onClose: function(){
+					console.log('onClose')
+				}      // gets called when popup is closed
 			});
 		}
 
-//https://www.divikingdom.com/ajax-add-to-cart-woocommerce-product-archive/
-		jQuery(function($){
-
+		jQuery(function($) {
 			/* global wc_add_to_cart_params */
-			if ( typeof wc_add_to_cart_params === 'undefined' ) {
+			if (typeof wc_add_to_cart_params === 'undefined') {
 				return false;
 			}
 
-			$(document).on('submit', 'form.cart', function(e){
+			if (!upSellPro) {
+				return false;
+			}
 
-				var form = $(this),
-					button = form.find('.single_add_to_cart_button');
+			$('body').on('added_to_cart',function( event, fragments, cart_hash, button) {
+				const product_id = button.data('product_id');
 
-				var formFields = form.find('input:not([name="product_id"]), select, button, textarea');
-
-				var id = null;
-				// create the form data array
-				var formData = [];
-				formFields.each(function(i, field){
-
-					// store them so you don't override the actual field's data
-					var fieldName = field.name,
-						fieldValue = field.value;
-
-					if(fieldName && fieldValue){
-
-						// set the correct product/variation id for single or variable products
-						if(fieldName == 'add-to-cart'){
-							fieldName = 'product_id';
-							fieldValue = form.find('input[name=variation_id]').val() || fieldValue;
-							id = fieldValue;
-						}
-
-						// if the fiels is a checkbox/radio and is not checked, skip it
-						if((field.type == 'checkbox' || field.type == 'radio') && field.checked == false){
-							return;
-						}
-
-						// add the data to the array
-						formData.push({
-							name: fieldName,
-							value: fieldValue
-						});
-					}
-
-				});
-
-				if(!formData.length){
-					return;
+				if (!product_id) {
+					return false;
 				}
-
-				e.preventDefault();
-
-				form.block({
-					message: null,
-					overlayCSS: {
-						background: "#ffffff",
-						opacity: 0.6
-					}
-				});
-
-				$(document.body).trigger('adding_to_cart', [button, formData]);
 
 				$.ajax({
 					type: 'POST',
-					url: woocommerce_params.wc_ajax_url.toString().replace('%%endpoint%%', 'add_to_cart'),
-					data: formData,
+					url: upSellPro.ajaxurl,
+					data: {
+						action: 'popUpResponse',
+						nonce: upSellPro.nonce,
+						id: product_id,
+					},
 					success: function(response){
-
 						if(!response){
 							return;
 						}
-
-						if(response.error & response.product_url){
-							window.location = response.product_url;
-							return;
-						}
-
 						// Redirect to cart option
 						if ( wc_add_to_cart_params.cart_redirect_after_add === 'yes' ) {
-							window.location = wc_add_to_cart_params.cart_url;
 							return;
 						}
 
-						$(document.body).trigger('added_to_cart', [response.fragments, response.cart_hash, button]);
-
-						popUpShow(id)
+						popUpShow(response)
 					},
-					complete: function(){
-						form.unblock();
+					error: function(response) {
+						return;
 					}
 				});
 
 				return false;
 
 			});
+		});
+
+
+// Pop up without AJAX
+
+		jQuery(function($) {
+			$('.up-sell-pro-not-ajax .add_to_cart_button').on('click', function () {
+				const product_id = $(this).data('product_id');
+				localStorage.setItem('addedToCart', product_id);
+			})
+
+			const addedToCart = localStorage.getItem('addedToCart');
+			console.log(addedToCart);
+			if(addedToCart){
+
+
+				$.ajax({
+					type: 'POST',
+					url: upSellPro.ajaxurl,
+					data: {
+						action: 'popUpResponse',
+						nonce: upSellPro.nonce,
+						id: addedToCart,
+					},
+					success: function(response){
+						if(!response){
+							return;
+						}
+						
+						popupS.window({
+							mode: 'modal',
+							title: 'Title',
+							content : response ,
+							className : 'additionalClass',  // for additional styling, gets append on every popup div
+							placeholder : 'Input Text',     // only available for mode: 'prompt'
+							onOpen: function(){
+								console.log(addedToCart);
+								localStorage.removeItem('addedToCart');
+							},      // gets called when popup is opened
+							onSubmit: function(val){
+								console.log('Submit')
+							}, // gets called when submitted. val as an paramater for prompts
+							onClose: function(){
+								console.log('onClose')
+							}      // gets called when popup is closed
+						});
+
+					},
+					error: function(response) {
+						return;
+					}
+				});
+
+			}
 		});
 
 	});

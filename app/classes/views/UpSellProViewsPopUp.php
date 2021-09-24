@@ -15,9 +15,9 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		if($this->settings['pop_enable_related_products'] === 'yes'){
 			wp_enqueue_script( 'popupS', UP_SELL_PRO_URL . 'public/js/popupS.js', array( ), $this->version, true );
 			add_action( 'wp_enqueue_scripts', array($this, 'localize'), 99 );
-			add_action( 'wp_ajax_popUpResponse', array($this, 'popUpResponse') );
-			add_action( 'wp_ajax_nopriv_popUpResponse', array($this, 'popUpResponse'));
-			$this->render();
+			add_filter( 'body_class',array($this, 'addBodyClasses') );
+			add_action( 'wp_ajax_popUpResponse', array($this, 'render') );
+			add_action( 'wp_ajax_nopriv_popUpResponse', array($this, 'render'));
 		}
 	}
 
@@ -28,41 +28,61 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		) );
 	}
 
+	function addBodyClasses( $classes ) {
 
-	public function popUpResponse() {
-
-		if ( empty( $_POST['nonce'] ) ) {
-			wp_die( '0' );
+		if('yes' === get_option( 'woocommerce_cart_redirect_after_add')){
+			$classes[] = 'up-sell-pro-redirect-after-add';
 		}
-		$product_id        = $_POST['id'];
-
-
-
-		if ( check_ajax_referer( 'nonce-up-sell-pro', 'nonce', false ) ) {
-			wp_send_json( $product_id    );
-			wp_die(  );
+		if('yes' === get_option( 'woocommerce_enable_ajax_add_to_cart') && 'no' === get_option( 'woocommerce_cart_redirect_after_add')){
+			$classes[] = 'up-sell-pro-ajax';
 		} else {
-			wp_die( 'Эх!', '', 403 );
+			$classes[] = 'up-sell-pro-not-ajax';
 		}
 
+		return $classes;
 	}
 
 	public function getArgs() {
 		return array(
-			'posts_per_page' => $this->settings['product_page_additional_products'] !== null
-                ? $this->settings['product_page_additional_products']
+			'posts_per_page' => $this->settings['pop_additional_products'] !== null
+                ? $this->settings['pop_additional_products']
                 : 2,
-			'orderby' => $this->settings['product_page_relation_order'] !== null
-                ? $this->settings['product_page_relation_order']
+			'orderby' => $this->settings['pop_relation_order'] !== null
+                ? $this->settings['pop_relation_order']
                 : 'rand',
-			'add_random' => $this->settings['product_page_add_if_empty'] == 'yes',
-			'type' => $this->settings['product_page_relation_priority'],
+			'add_random' => $this->settings['pop_add_if_empty'] == 'yes',
+			'type' => $this->settings['pop_relation_priority'],
 			'offset_search' => $this->settings['general_keep_queries'],
 		);
 	}
 
 	public function render(){
 
+		if ( empty( $_POST['nonce'] ) ) {
+			wp_die( '0' );
+		}
+		$product_id = $_POST['id'];
+
+		$args = $this->getArgs();
+		$args['id'] = $product_id;
+
+		$output = '<h2>'. esc_html('Up Sell Pro Info') . '</h2>';
+		foreach ($this->settings['email_add_to_order'] as $key => $value){
+			// render search queries
+			if($value == 'search'){
+				$provider = $this->dataProvider->getProvider('categories');
+				$row = $this->helper->getEmailRowContent($value, $args, $provider);
+				$output .= $row['title'];
+				$output .= $row['content'];
+			}
+		}
+
+		if ( check_ajax_referer( 'nonce-up-sell-pro', 'nonce', false ) ) {
+			wp_send_json( $output );
+			wp_die(  );
+		} else {
+			wp_die( 'Эх!', '', 403 );
+		}
 
 	}
 }
