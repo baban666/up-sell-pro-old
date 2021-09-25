@@ -34,6 +34,9 @@
 		const addLink = document.querySelector('.up-sell-products .btn');
 		const addButton = document.querySelector('.up-sell-products .single_add_to_cart_button');
 		const addCheckboxes = document.querySelectorAll('.up-sell-products .box');
+		const cards = document.querySelectorAll('.up-sell-products .card');
+		const priceFull = document.querySelector('.up-sell-products .price-full');
+		const fullPriceLine = document.querySelector('.up-sell-products .full-price-line');
 
 		const addDisableToProduct = (id) => {
 			const card = document.querySelector(`.related-product-id-${id}`);
@@ -49,8 +52,30 @@
 			addButton.disabled = true;
 		}
 
+		const hideFullPriceLine = () => {
+			fullPriceLine.style.display = 'none';
+		}
+		const showFullPriceLine = () => {
+			fullPriceLine.style.display = 'inline';
+		}
+
 		const removeDisableToButton = () => {
 			addButton.removeAttribute('disabled');
+		}
+
+		const getFullPrice = () => {
+			let fullPrice = null;
+			if(cards.length){
+				cards.forEach(elem => {
+					if(!elem.classList.contains('disabled')){
+						fullPrice += +elem.dataset.price;
+					}
+				})
+			}
+			return fullPrice;
+		}
+		const updatePrice = (value) => {
+			priceFull.innerText = value;
 		}
 
 		const addAdditionalProduct = (id) => {
@@ -60,6 +85,7 @@
 			removeDisableToProduct(id);
 			if(url.searchParams.get('add-to-cart').split(',').length > 1){
 				removeDisableToButton();
+				showFullPriceLine();
 			}
 		}
 
@@ -71,6 +97,7 @@
 			addDisableToProduct(id);
 			if(url.searchParams.get('add-to-cart').split(',').length === 1){
 				addDisableToButton();
+				hideFullPriceLine();
 			}
 		}
 
@@ -80,6 +107,7 @@
 			} else {
 				removeAdditionalProduct(event.currentTarget.getAttribute('data-id'))
 			}
+			updatePrice(getFullPrice());
 		}
 
 		addCheckboxes.forEach((elem) =>{
@@ -187,7 +215,6 @@
 			})
 
 			const addedToCart = localStorage.getItem('addedToCart');
-			console.log(addedToCart);
 			if(addedToCart){
 
 
@@ -203,7 +230,7 @@
 						if(!response){
 							return;
 						}
-						
+
 						popupS.window({
 							mode: 'modal',
 							title: 'Title',

@@ -32,65 +32,94 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 	}
 
 	public function render(){
-		global $product;
+		global $product, $post;
 		$args = $this->getArgs();
 		$provider = $this->dataProvider->getProvider($args['type']);
 		$args['id'] = $product->get_id();
 		$loop = $provider->getData($args);
+		$fullPrice = $product->get_price();
+		$relatedIDs = [$product->get_id()];
 
 		if($this->settings['product_page_add_if_empty'] == 'yes' && !$loop->have_posts() ){
 			$randomProvider = $this->dataProvider->getProvider('random');
 			$loop = $randomProvider->getData($args);
 		}
 		?>
-		<div class="container up-sell-products">
-			<div class="row">
-				<div class="col">
-					<div class="card">
+		<?php if($loop->have_posts()): ?>
+            <div class="up-sell-products">
+				<?php if($this->settings['product_page_add_bundle']): ?>
+                    <h2 class="up-sell-products-title">
+						<?php esc_html_e($this->settings['product_page_add_bundle']); ?>
+                    </h2>
+				<?php endif; ?>
+                <div class="cards-list">
+                    <div class="card main" data-price="<?php echo $product->get_price(); ?>">
+						<?php echo $product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php
-						$image = wp_get_attachment_image_src( get_post_thumbnail_id( $product->get_id() ), 'single-post-thumbnail' );
+						if($product->get_sale_price()){
+							echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product );
+						}
 						?>
-						<img src="<?php echo $image[0]; ?>" data-id="<?php echo $product->get_id(); ?>" />
-						<div class="card-block">
-							<h4 class="card-title"><?php echo get_the_title($product->get_id());  ?></h4>
-							<p class="card-text">Price: <?php echo  $product->get_regular_price();  ?></p>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					+
-				</div>
-				<?php
-				while ( $loop->have_posts() ) : $loop->the_post();
-					$_product = wc_get_product( get_the_ID() );
-					$imageRel = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
+                        <div class="card-block">
+                            <h4 class="card-title">
+                                <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
+                            </h4>
+                            <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
+								<?php echo $product->get_price_html(); ?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="plus">
+                        <i class="fas fa-plus"></i>
+                    </div>
+					<?php
+					while ( $loop->have_posts() ) : $loop->the_post();
+						global $post;
+						$_product = wc_get_product( get_the_ID() );
+						$fullPrice += $_product->get_price();
+						array_push($relatedIDs, get_the_ID());
+						?>
+                        <div class="card related-product related-product-id-<?php esc_attr_e(get_the_ID());  ?>"  data-price="<?php echo $_product->get_price(); ?>" >
+                            <input type="checkbox" checked data-id="<?php esc_attr_e(get_the_ID());  ?>" class="box">
+							<?php
+							if($_product->get_sale_price()){
+								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $_product );
+							}
+							?>
+                            <a  href="<?php the_permalink();  ?>">
+								<?php echo $_product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            </a>
+                            <div class="card-desc">
+                                <a href="<?php the_permalink(); ?>">
+                                    <h4 class="up-sell-card-title">
+										<?php echo wp_kses_post( $_product->get_name() );  ?>
+                                    </h4>
+                                </a>
+                                <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
+									<?php echo $_product->get_price_html(); ?>
+                                </p>
+                            </div>
+                        </div>
+					<?php
+					endwhile;
+					wp_reset_query();
 					?>
-					<div class="col">
-						<div class="card related-product disabled related-product-id-<?php echo get_the_ID();  ?>" >
-							<a href="<?php echo  get_permalink();  ?>">
-								<img src="<?php echo $imageRel[0]; ?>" data-id="<?php echo $product->get_id(); ?>" />
-							</a>
-							<div class="card-block">
-								<h4 class="card-title"><?php echo get_the_title();  ?></h4>
-								<p class="card-text">Price: <?php echo  $_product->get_regular_price();  ?></p>
-								<input type="checkbox" data-id="<?php echo get_the_ID();  ?>" class="box">
-							</div>
-						</div>
-					</div>
-				<?php
-				endwhile;
-				wp_reset_query();
-				?>
-				<div class="col">
-					<a href="<?php echo get_permalink() . '?add-to-cart=' . get_the_ID();  ?>" class="btn">
-						<button type="button" name="add-to-cart" disabled class="single_add_to_cart_button button alt">
-							Add to cart
-						</button>
-					</a>
-				</div>
-			</div>
-
-		</div>
+                </div>
+                <div class="button-row">
+                    <a href="<?php echo get_permalink() . '?add-to-cart=' . implode(',', $relatedIDs);  ?>" class="btn">
+                        <button type="button" name="add-to-cart" class="single_add_to_cart_button button alt">
+							<?php esc_html_e($this->settings['product_page_add_to_cart']); ?>
+                        </button>
+                    </a>
+					<?php if($this->settings['product_page_add_to_cart_desc']): ?>
+                        <span class="full-price-line">
+                    <span class="price-desc"><?php esc_html_e($this->settings['product_page_add_to_cart_desc']); ?></span>
+                    <span class="price-full"><?php esc_html_e($fullPrice); ?></span>
+                </span>
+					<?php endif; ?>
+                </div>
+            </div>
+		<?php endif; ?>
 
 		<?php
 

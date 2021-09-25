@@ -72,7 +72,23 @@ return [array(
 			'attributes'    => array(
 				'placeholder' => 'Add to cart',     // optional
 				// 'data-test'   => 'test',      // optional, some extra HTML attribute(s)
-
+			),
+			'help'        => 'Help text',    // optional
+		),
+		array(
+			'id'          => 'product_page_add_to_cart_desc',
+			'type'        => 'text',
+			'title'       => 'Add to cart desc',
+			//'prepend' => 'fa-font',             // optional
+			//'append'  => 'Char',                // optional
+			// 'before'      => 'Text Before',  // optional
+			// 'after'       => 'Text After',   // optional
+			// 'class'       => 'text-class',   // optional
+			// 'description' => 'Description',  // optional
+			'default'     => 'Full price', // optional
+			'attributes'    => array(
+				'placeholder' => 'Full price:',     // optional
+				// 'data-test'   => 'test',      // optional, some extra HTML attribute(s)
 			),
 			'help'        => 'Help text',    // optional
 		),
