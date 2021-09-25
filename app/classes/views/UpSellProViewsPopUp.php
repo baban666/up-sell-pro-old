@@ -52,7 +52,6 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
                 : 'rand',
 			'add_random' => $this->settings['pop_add_if_empty'] == 'yes',
 			'type' => $this->settings['pop_relation_priority'],
-			'offset_search' => $this->settings['general_keep_queries'],
 		);
 	}
 
@@ -61,24 +60,19 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		if ( empty( $_POST['nonce'] ) ) {
 			wp_die( '0' );
 		}
-		$product_id = $_POST['id'];
 
-		$args = $this->getArgs();
-		$args['id'] = $product_id;
-
-		$output = '<h2>'. esc_html('Up Sell Pro Info') . '</h2>';
-		foreach ($this->settings['email_add_to_order'] as $key => $value){
-			// render search queries
-			if($value == 'search'){
-				$provider = $this->dataProvider->getProvider('categories');
-				$row = $this->helper->getEmailRowContent($value, $args, $provider);
-				$output .= $row['title'];
-				$output .= $row['content'];
-			}
+		if ( empty( $_POST['id'] ) ) {
+			wp_die( '0' );
 		}
 
+		$args = $this->getArgs();
+		$args['id'] = $_POST['id'];
+
+		$row = $this->helper->getPopUpContent($args, $this->dataProvider);
+		ob_end_clean();
+
 		if ( check_ajax_referer( 'nonce-up-sell-pro', 'nonce', false ) ) {
-			wp_send_json( $output );
+			wp_send_json( ['markup' => $row, 'title' => esc_html($this->settings['pop_add_bundle'])] );
 			wp_die(  );
 		} else {
 			wp_die( 'Эх!', '', 403 );

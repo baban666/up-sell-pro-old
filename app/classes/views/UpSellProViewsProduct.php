@@ -23,11 +23,14 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 
 	public function getArgs() {
 		return array(
-			'posts_per_page' => $this->settings['product_page_additional_products'] !== null ? $this->settings['product_page_additional_products'] : 2,
-			'orderby' => $this->settings['product_page_relation_order'] !== null ? $this->settings['product_page_relation_order'] : 'rand',
+			'posts_per_page' => $this->settings['product_page_additional_products'] !== null
+                ? $this->settings['product_page_additional_products'] :
+                2,
+			'orderby' => $this->settings['product_page_relation_order'] !== null
+                ? $this->settings['product_page_relation_order']
+                : 'rand',
 			'add_random' => $this->settings['product_page_add_if_empty'] == 'yes',
 			'type' => $this->settings['product_page_relation_priority'],
-			'offset_search' => $this->settings['general_keep_queries'],
 		);
 	}
 
@@ -44,6 +47,7 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 			$randomProvider = $this->dataProvider->getProvider('random');
 			$loop = $randomProvider->getData($args);
 		}
+
 		?>
 		<?php if($loop->have_posts()): ?>
             <div class="up-sell-products">

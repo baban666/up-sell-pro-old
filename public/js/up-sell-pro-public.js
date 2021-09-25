@@ -126,7 +126,7 @@
 		const escape = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 		const trackSearch = () => {
-			const search = Cookies.get('up-sell-search');
+			// const search = Cookies.get('up-sell-search');
 			$('form[role="search"]').submit(function() {
 				if(Array.isArray($(this).serializeArray()) && $(this).serializeArray()[0].value){
 					addSearchQuery(escape($(this).serializeArray()[0].value));
@@ -141,25 +141,27 @@
 
 // Pop up Ajax button
 		const popUpShow = (data) =>{
+			const body = document.querySelector('body');
+			if (!data['markup'].includes('up-sell-products')){
+				return false;
+			}
 			popupS.window({
 				mode: 'modal',
-				title: 'Title',
-				content : data ,
+				title: data['title'],
+				content : data['markup'] ,
 				className : 'additionalClass',  // for additional styling, gets append on every popup div
-				placeholder : 'Input Text',     // only available for mode: 'prompt'
-				onOpen: function(){
-					console.log('onOpen')
+				labelOk: false,
+				onOpen: () => {
+					body.classList.add('up-sell-pop-up-open');
 				},      // gets called when popup is opened
-				onSubmit: function(val){
-					console.log('Submit')
-				}, // gets called when submitted. val as an paramater for prompts
-				onClose: function(){
-					console.log('onClose')
+				onClose: () => {
+					body.classList.remove('up-sell-pop-up-open');
+					$( document.body ).trigger( 'updated_cart_totals' );
 				}      // gets called when popup is closed
 			});
 		}
 
-		jQuery(function($) {
+
 			/* global wc_add_to_cart_params */
 			if (typeof wc_add_to_cart_params === 'undefined') {
 				return false;
@@ -171,8 +173,13 @@
 
 			$('body').on('added_to_cart',function( event, fragments, cart_hash, button) {
 				const product_id = button.data('product_id');
+				const body = document.querySelector('body');
 
 				if (!product_id) {
+					return false;
+				}
+
+				if (body.classList.contains('up-sell-pop-up-open')) {
 					return false;
 				}
 
@@ -193,22 +200,23 @@
 							return;
 						}
 
-						popUpShow(response)
+						if (!body.classList.contains('up-sell-pop-up-open') && !body.classList.contains('woocommerce-cart')) {
+							popUpShow(response);
+						}
+
 					},
 					error: function(response) {
 						return;
 					}
 				});
 
-				return false;
-
 			});
-		});
+
 
 
 // Pop up without AJAX
 
-		jQuery(function($) {
+
 			$('.up-sell-pro-not-ajax .add_to_cart_button').on('click', function () {
 				const product_id = $(this).data('product_id');
 				localStorage.setItem('addedToCart', product_id);
@@ -258,6 +266,5 @@
 			}
 		});
 
-	});
 
 })( jQuery );

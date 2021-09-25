@@ -214,6 +214,56 @@ class UpSellProHelper {
 		return $markup;
 	}
 
+	public function getPopUpContent($data = null, $dataProvider = null){
+		$provider = $dataProvider->getProvider($data['type']);
+		$loop = $provider->getData($data);
+
+		if($data['add_random'] && !$loop->have_posts() ){
+			$randomProvider = $dataProvider->getProvider('random');
+			$loop = $randomProvider->getData($data);
+		}
+		ob_start();
+		?>
+		<?php if($loop->have_posts()): ?>
+			<div class="up-sell-products">
+				<div class="cards-list">
+					<?php
+					while ( $loop->have_posts() ) : $loop->the_post();
+						global $post;
+						$_product = wc_get_product( get_the_ID() );
+						?>
+						<div class="card related-product related-product-id-<?php esc_attr_e(get_the_ID());  ?>"  data-price="<?php echo $_product->get_price(); ?>" >
+							<?php
+							if($_product->get_sale_price()){
+								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $_product );
+							}
+							?>
+							<a  href="<?php the_permalink();  ?>">
+								<?php echo $_product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							</a>
+							<div class="card-desc">
+								<a href="<?php the_permalink(); ?>">
+									<h4 class="up-sell-card-title">
+										<?php echo wp_kses_post( $_product->get_name() );  ?>
+									</h4>
+								</a>
+								<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
+									<?php echo $_product->get_price_html(); ?>
+									<?php woocommerce_template_loop_add_to_cart( ); ?>
+								</p>
+							</div>
+						</div>
+					<?php
+					endwhile;
+					wp_reset_query();
+					?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<?php
+		return ob_get_contents();
+	}
+
 	public function ddAjax($value){
 		error_log( print_r($value, true) );
 	}
