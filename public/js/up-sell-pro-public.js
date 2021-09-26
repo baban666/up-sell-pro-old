@@ -140,30 +140,35 @@
 
 
 // Pop up Ajax button
+
+
 		const popUpShow = (data) =>{
 			const body = document.querySelector('body');
 			if (!data['markup'].includes('up-sell-products')){
 				return false;
 			}
 			popupS.window({
-				mode: 'modal',
+				mode: 'alert',
 				title: data['title'],
 				content : data['markup'] ,
 				className : 'additionalClass',  // for additional styling, gets append on every popup div
-				labelOk: false,
+				labelOk: data['continue'],
 				onOpen: () => {
 					body.classList.add('up-sell-pop-up-open');
+					localStorage.removeItem('addedToCart');
 				},      // gets called when popup is opened
 				onClose: () => {
 					body.classList.remove('up-sell-pop-up-open');
-					$( document.body ).trigger( 'updated_cart_totals' );
-				}      // gets called when popup is closed
+				},      // gets called when popup is closed
+				onSubmit: () => {
+					body.classList.remove('up-sell-pop-up-open');
+				},
 			});
 		}
 
-
+		const body = document.querySelector('body');
 			/* global wc_add_to_cart_params */
-			if (typeof wc_add_to_cart_params === 'undefined') {
+			if (typeof wc_add_to_cart_params === 'undefined' && !body.classList.contains('up-sell-pro-not-ajax')) {
 				return false;
 			}
 
@@ -173,7 +178,7 @@
 
 			$('body').on('added_to_cart',function( event, fragments, cart_hash, button) {
 				const product_id = button.data('product_id');
-				const body = document.querySelector('body');
+
 
 				if (!product_id) {
 					return false;
@@ -213,11 +218,9 @@
 			});
 
 
-
 // Pop up without AJAX
 
-
-			$('.up-sell-pro-not-ajax .add_to_cart_button').on('click', function () {
+			$('.woocommerce-shop.up-sell-pro-not-ajax .add_to_cart_button').on('click', function () {
 				const product_id = $(this).data('product_id');
 				localStorage.setItem('addedToCart', product_id);
 			})
@@ -239,23 +242,9 @@
 							return;
 						}
 
-						popupS.window({
-							mode: 'modal',
-							title: 'Title',
-							content : response ,
-							className : 'additionalClass',  // for additional styling, gets append on every popup div
-							placeholder : 'Input Text',     // only available for mode: 'prompt'
-							onOpen: function(){
-								console.log(addedToCart);
-								localStorage.removeItem('addedToCart');
-							},      // gets called when popup is opened
-							onSubmit: function(val){
-								console.log('Submit')
-							}, // gets called when submitted. val as an paramater for prompts
-							onClose: function(){
-								console.log('onClose')
-							}      // gets called when popup is closed
-						});
+						if (!body.classList.contains('up-sell-pop-up-open') && !body.classList.contains('woocommerce-cart')) {
+							popUpShow(response);
+						}
 
 					},
 					error: function(response) {
@@ -265,6 +254,5 @@
 
 			}
 		});
-
 
 })( jQuery );

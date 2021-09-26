@@ -52,6 +52,8 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
                 : 'rand',
 			'add_random' => $this->settings['pop_add_if_empty'] == 'yes',
 			'type' => $this->settings['pop_relation_priority'],
+			'title' => $this->settings['pop_add_bundle'],
+			'cart' => $this->settings['pop_cart_link'],
 		);
 	}
 
@@ -72,7 +74,10 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		ob_end_clean();
 
 		if ( check_ajax_referer( 'nonce-up-sell-pro', 'nonce', false ) ) {
-			wp_send_json( ['markup' => $row, 'title' => esc_html($this->settings['pop_add_bundle'])] );
+			wp_send_json( ['markup' => $row,
+			               'title' => esc_html('Product has been added to your cart', 'woocommerce' ),
+			               'continue' => esc_html('Continue shopping', 'woocommerce' )
+			] );
 			wp_die(  );
 		} else {
 			wp_die( 'Эх!', '', 403 );

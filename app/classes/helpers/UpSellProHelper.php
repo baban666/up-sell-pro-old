@@ -222,9 +222,14 @@ class UpSellProHelper {
 			$randomProvider = $dataProvider->getProvider('random');
 			$loop = $randomProvider->getData($data);
 		}
+		$cart_page = $data['cart'] ? $data['cart'] : esc_url( wc_get_page_permalink( 'cart' ) );
+
+		$message   = sprintf( '<a href="%s" class="wc-forward">%s</a>',$cart_page , esc_html__( 'View cart', 'woocommerce' ) );
 		ob_start();
 		?>
 		<?php if($loop->have_posts()): ?>
+            <?php echo $message; ?>
+            <h4><?php esc_html_e($data['title']); ?></h4>
 			<div class="up-sell-products">
 				<div class="cards-list">
 					<?php

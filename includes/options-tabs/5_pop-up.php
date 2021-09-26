@@ -44,6 +44,23 @@ return [array(
 			),
 			'help'        => 'Help text',    // optional
 		),
+		array(
+			'id'          => 'pop_cart_link',
+			'type'        => 'text',
+			'title'       => 'Cart link',
+			'prepend' => 'fa-font',             // optional
+			// 'before'      => 'Text Before',  // optional
+			// 'after'       => 'Text After',   // optional
+			// 'class'       => 'text-class',   // optional
+			// 'description' => 'Description',  // optional
+			// 'default'     => 'Default Text', // optional
+			'attributes'    => array(
+				'placeholder' => 'type link to your cart',     // optional
+				// 'data-test'   => 'test',      // optional, some extra HTML attribute(s)
+
+			),
+			'help'        => 'Help text',    // optional
+		),
 
 		array(
 			'id'             => 'pop_relation_priority',
