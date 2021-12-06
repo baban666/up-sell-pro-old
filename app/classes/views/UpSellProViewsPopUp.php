@@ -75,12 +75,12 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 
 		if ( check_ajax_referer( 'nonce-up-sell-pro', 'nonce', false ) ) {
 			wp_send_json( ['markup' => $row,
-			               'title' => esc_html('Product has been added to your cart', 'woocommerce' ),
-			               'continue' => esc_html('Continue shopping', 'woocommerce' )
+			               'title' => esc_html__('Product has been added to your cart', 'up-sell-pro' ),
+			               'continue' => esc_html__('Continue shopping', 'up-sell-pro' )
 			] );
 			wp_die(  );
 		} else {
-			wp_die( 'Эх!', '', 403 );
+			wp_die( '0', '', 403 );
 		}
 
 	}

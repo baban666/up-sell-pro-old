@@ -49,33 +49,6 @@
 }
 
 
-
-
-h1 {
-    margin: 0;
-}
-
-h2 {
-    color: var(--first-color);
-    font-size: var(--info-font-size);
-    line-height: 2rem;
-}
-
-p {
-    font-size: var(--normal-font-size);
-    color: var(--first-color-light);
-    line-height: 1rem;
-}
-
-a {
-    text-decoration: none;
-}
-
-img {
-    max-width: 80px;
-    height: auto;
-}
-
 /*==== ARRASTRAR Y SOLTAR ====*/
 .drop,
 .drop__container {

@@ -21,7 +21,6 @@ return [array(
 				'woocommerce_after_cart_contents'   => 'After content',
 				'woocommerce_after_cart_table'      => 'After table',
 				'woocommerce_after_cart'      => 'After cart',
-				'woocommerce_cart_collaterals'      => 'After collaterals',
 			),
 			'default' => 'woocommerce_after_cart_contents',
 			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional

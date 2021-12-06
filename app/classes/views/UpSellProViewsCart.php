@@ -70,38 +70,31 @@ class UpSellProViewsCart extends UpSellProViewItem {
 						global $post;
 						$_product = wc_get_product( get_the_ID() );
 						?>
-                        <div class="mdc-card bottom-card mdc-elevation--z4">
-	                        <?php
-	                        if($_product->get_sale_price()){
-		                        echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $_product );
-	                        }
-	                        ?>
-                            <div class="first-half">
-                                <div class="mdc-card__primary-action media-image top-card mdc-elevation--z8">
-                                    <div class="mdc-card__media mdc-card__media--square">
-                                        <div class="mdc-card__media-content">
-                                            <a  href="<?php the_permalink();  ?>">
-		                                        <?php echo $_product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                                            </a>
-                                        </div>
-                                    </div>
+                        <div class="card related-product related-product-id-<?php esc_attr_e(get_the_ID());  ?>"  data-price="<?php echo $_product->get_price(); ?>" >
+							<?php
+							if($_product->get_sale_price()){
+								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $_product );
+							}
+							?>
+                            <a  href="<?php the_permalink();  ?>">
+								<?php echo $_product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            </a>
+                            <div class="card-desc">
+                                <a href="<?php the_permalink(); ?>">
+                                    <h4 class="up-sell-card-title">
+										<?php echo wp_kses_post( $_product->get_name() );  ?>
+                                    </h4>
+                                </a>
+                                <div class="rating-info">
+		                            <?php  woocommerce_template_loop_rating(); ?>
                                 </div>
-                            </div>
-                            <div class="last-half">
-                                <div class="card-info">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h2 class="up-sell-card-title">
-			                                <?php echo wp_kses_post( $_product->get_name() );  ?>
-                                        </h2>
-                                    </a>
-                                    <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
-		                                <?php echo $_product->get_price_html(); ?>
-                                    </p>
-	                                <?php woocommerce_template_loop_add_to_cart( ); ?>
+                                <div class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
+									<?php echo $_product->get_price_html(); ?>
                                 </div>
+	                            <?php woocommerce_template_loop_add_to_cart( ); ?>
                             </div>
                         </div>
-                    <?php
+					<?php
 					endwhile;
 					wp_reset_query();
 					?>

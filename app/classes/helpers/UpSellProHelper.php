@@ -252,6 +252,9 @@ class UpSellProHelper {
 										<?php echo wp_kses_post( $_product->get_name() );  ?>
 									</h4>
 								</a>
+                                <div class="rating-info">
+									<?php  woocommerce_template_loop_rating(); ?>
+                                </div>
 								<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
 									<?php echo $_product->get_price_html(); ?>
 									<?php woocommerce_template_loop_add_to_cart( ); ?>

@@ -41,6 +41,12 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 		$args['id'] = $product->get_id();
 		$loop = $provider->getData($args);
 		$fullPrice = $product->get_price();
+		$productPrice = $product->get_price();
+		$fullPriceHtml = $product->get_price_html();
+		if( $product->is_on_sale() ) {
+			$fullPriceHtml = wc_price($product->get_price());
+		}
+
 		$relatedIDs = [$product->get_id()];
 
 		if($this->settings['product_page_add_if_empty'] == 'yes' && !$loop->have_posts() ){
@@ -68,6 +74,9 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                             <h4 class="card-title">
                                 <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
                             </h4>
+                            <div class="rating-info">
+		                        <?php  woocommerce_template_loop_rating(); ?>
+                            </div>
                             <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
 								<?php echo $product->get_price_html(); ?>
                             </p>
@@ -99,6 +108,9 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 										<?php echo wp_kses_post( $_product->get_name() );  ?>
                                     </h4>
                                 </a>
+                                <div class="rating-info">
+		                            <?php  woocommerce_template_loop_rating(); ?>
+                                </div>
                                 <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
 									<?php echo $_product->get_price_html(); ?>
                                 </p>
@@ -117,9 +129,15 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                     </a>
 					<?php if($this->settings['product_page_add_to_cart_desc']): ?>
                         <span class="full-price-line">
-                    <span class="price-desc"><?php esc_html_e($this->settings['product_page_add_to_cart_desc']); ?></span>
-                    <span class="price-full"><?php esc_html_e($fullPrice); ?></span>
-                </span>
+                            <span class="price-desc">
+                                <?php esc_html_e($this->settings['product_page_add_to_cart_desc']); ?>
+                            </span>
+                            <span class="price-full">
+                                <?php // esc_html_e($fullPrice); ?>
+                                <?php // echo preg_replace('/[0-9]+/', (int) $fullPrice, $fullPriceHtml); ?>
+                                <?php echo str_replace($productPrice, $fullPrice, $fullPriceHtml); ?>
+                            </span>
+                        </span>
 					<?php endif; ?>
                 </div>
             </div>

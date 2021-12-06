@@ -35,7 +35,7 @@
 		const addButton = document.querySelector('.up-sell-products .single_add_to_cart_button');
 		const addCheckboxes = document.querySelectorAll('.up-sell-products .box');
 		const cards = document.querySelectorAll('.up-sell-products .card');
-		const priceFull = document.querySelector('.up-sell-products .price-full');
+		const priceFull = document.querySelector('.up-sell-products .price-full bdi');
 		const fullPriceLine = document.querySelector('.up-sell-products .full-price-line');
 
 		const addDisableToProduct = (id) => {
@@ -68,6 +68,8 @@
 			if(cards.length){
 				cards.forEach(elem => {
 					if(!elem.classList.contains('disabled')){
+						console.log(elem.dataset.price)
+
 						fullPrice += +elem.dataset.price;
 					}
 				})
@@ -75,7 +77,13 @@
 			return fullPrice;
 		}
 		const updatePrice = (value) => {
-			priceFull.innerText = value;
+			if(priceFull.childNodes.length){
+				priceFull.childNodes.forEach((item)=>{
+					if (item.nodeType === Node.TEXT_NODE){
+						item.textContent = value;
+					}
+				})
+			}
 		}
 
 		const addAdditionalProduct = (id) => {
