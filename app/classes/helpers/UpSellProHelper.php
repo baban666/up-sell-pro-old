@@ -1,6 +1,9 @@
 <?php
 
 namespace classes\helpers;
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 class UpSellProHelper {
 
@@ -22,8 +25,8 @@ class UpSellProHelper {
 	}
 
 	public function getProductTags() {
-		$output     = array();
-		$tags = get_terms( array(
+		$output = array();
+		$tags   = get_terms( array(
 			'orderby'      => 'name',
 			'pad_counts'   => false,
 			'hierarchical' => 1,
@@ -86,124 +89,138 @@ class UpSellProHelper {
 
 	public function getItemsId( $items ) {
 		$arr = [];
-		if ( is_array( $items )  ) {
+		if ( is_array( $items ) ) {
 			foreach ( $items as $item ) {
 				$arr[] = $item->term_id;
 			}
 		}
+
 		return $arr;
 	}
+
 	public function getSeparator( $key, $length ) {
 		return $key + 1 == $length ? '' : ', ';
 	}
 
-	public function getSearchQueriesTab($value, $data = null){
+	public function getSearchQueriesTab( $value, $data = null ) {
 		$markup = [
-			'tab' => '<li><div class="tabs__toggle active" data-tab='. esc_html($value) .'>' . esc_html('Search queries') .'</div></li>',
-			'content' =>'',
+			'tab'     => '<li><div class="tabs__toggle" data-tab=' . esc_attr( $value ) . '>' . esc_html__( 'Search queries', 'up-sell-pro' ) . '</div></li>',
+			'content' => '',
 		];
 
-		if(is_array($data)){
-			$content = '';
-			foreach ($data as $key => $value){
-				$content .= '<strong>'. esc_html($value) . '</strong>' . $this->getSeparator($key, count($data)) ;
-			}
-			$markup['content'] .= 	'<li class="tabs__tab-panel  active" data-tab="search">
-										<div class="tabs__content">
-											<p>'
-			                                  . $content .
-											'</p>
-										</div>
-									</li>';
-		}
+
+        $content = '';
+        if (count($data)){
+            foreach ( $data as $key => $value ) {
+                $content .= '<strong>' . esc_html( $value ) . '</strong>' . $this->getSeparator( $key, count( $data ) );
+            }
+        } else {
+            $content .= esc_html__('Nothing to show', 'up-sell-pro');
+        }
+
+        $markup['content'] .= '<li class="tabs__tab-panel" data-tab="search">
+                                    <div class="tabs__content">
+                                        <p>'
+                              . $content .
+                              '</p>
+                                    </div>
+                                </li>';
+
 		return $markup;
 	}
 
 
-	public function getTabContent($value, $data = null, $provider = null){
-		$tabTitle = $this->getTabTitle($value);
-		$loop = $provider->getData($data);
-		$markup = [
-			'tab' => '<li><div class="tabs__toggle" data-tab='. esc_html($value) .'>' . esc_html($tabTitle['title']) .'</div></li>',
-			'content' =>'',
+	public function getTabContent( $value, $data = null, $provider = null ) {
+		$tabTitle = $this->getTabTitle( $value );
+		$loop     = $provider->getData( $data );
+		$markup   = [
+			'tab'     => '<li><div class="tabs__toggle" data-tab=' . esc_attr( $value ) . '>' . esc_html( $tabTitle['title'] ) . '</div></li>',
+			'content' => '',
 		];
 
 		$content = '';
-		foreach ($loop->posts as $key => $post){
-			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-			$product = wc_get_product( $post->ID );
-			$content .= '<div class="drop__card">
+
+		if(count($loop->posts)){
+			foreach ( $loop->posts as $key => $post ) {
+				$product = wc_get_product( $post->ID );
+				$content .= '<div class="drop__card">
 			                <div class="drop__data">
-			                    <img src="'. $image[0] .'">
+			                    ' . $product->get_image( "thumbnail" ) . '
 			                    <div>
-			                        <a href="'. get_permalink( $post->ID ) .' ">
-			                            <h1 class="drop__name">' . $post->post_title .'</h1>
+			                        <a href="' . esc_url(get_permalink( $post->ID ))  . '" target="_blank">
+			                            <h1 class="drop__name">' . $post->post_title . '</h1>
 			                        </a>
-			                        <span class="drop__profession">Desarrolladora Web</span>
 			                    </div>
 			                </div>
 			                <div>
-			                    <p class="card-text">Price:' . $product->get_regular_price() . '</p>
+			                    <p class="card-text">'. esc_html__('Price: ', 'up-sell-pro') . $product->get_price_html() . '</p>
 			                </div>
 			            </div>';
-		}
+			}
+        } else{
+		    $content .= esc_html__('Nothing to show', 'up-sell-pro');
+        }
+
 		wp_reset_query();
 
-		$markup['content'] .= '<li class="tabs__tab-panel" data-tab="'. esc_html($value) .'">
+		$markup['content'] .= '<li class="tabs__tab-panel" data-tab="' . esc_attr( $value ) . '">
 								<div class="tabs__content">
 								  <div class="drop">
                                      <div class="drop__container" id="drop-items">'
-	                                     . $content .
-	                                 '</div>
+		                      . $content .
+		                      '</div>
                                   </div>
                                 </div>
 							   </li>';
+
 		return $markup;
 	}
 
-	public function getTabTitle($value){
+	public function getTabTitle( $value ) {
 		$tabs = [
-			'tag'       => ['title'=> 'Related by Tags', 'id' => $value],
-			'category'  => ['title'=> 'Related by Categories', 'id' => $value],
-			'viewed'    => ['title'=> 'Viewed products', 'id' => $value],
-			'search'    => ['title'=> 'Search queries', 'id' => $value],
+			'tag'      => [ 'title' =>  esc_html__( 'Related by Tags:', 'up-sell-pro' ), 'id' => $value ],
+			'category' => [ 'title' => esc_html__( 'Related by Categories:', 'up-sell-pro' ), 'id' => $value ],
+			'viewed'   => [ 'title' => esc_html__( 'Viewed products:', 'up-sell-pro' ), 'id' => $value ],
+			'search'   => [ 'title' => esc_html__( 'Search queries:', 'up-sell-pro' ), 'id' => $value ],
 		];
 
-		return $tabs[$value];
+		return $tabs[ $value ];
 	}
 
-	public function getSearchQueriesEmailRow($value, $data = null){
+	public function getSearchQueriesEmailRow( $value, $data = null ) {
 		$markup = [
-			'title' => '<div class="email-queries-title"><strong>' . esc_html('Search queries: ') .'<strong></div>',
-			'content' =>'',
+			'title'   => '<div class="email-queries-title"><strong>' . esc_html__( 'Search queries: ', 'up-sell-pro' ) . '<strong></div>',
+			'content' => '',
 		];
 
-		if(is_array($data)){
+		if ( is_array( $data ) ) {
 			$content = '';
-			foreach ($data as $key => $value){
-				$content .= '<strong>'. esc_html($value) . '</strong>' . $this->getSeparator($key, count($data)) ;
+			foreach ( $data as $key => $value ) {
+				$content .= '<strong>' . esc_html( $value ) . '</strong>' . $this->getSeparator( $key, count( $data ) );
 			}
-			$markup['content'] .= 	'<div class="email-queries-content">'. $content.'</div>';
+			$markup['content'] .= '<div class="email-queries-content">' . $content . '</div>';
 		}
+
 		return $markup;
 	}
 
-	public function getEmailRowContent($value, $data = null, $provider = null){
-		$tabTitle = $this->getTabTitle($value);
-		$loop = $provider->getData($data);
-		$markup = [
-			'title' => '<div class="email-content-title"><strong>' . esc_html($tabTitle['title']) . '<strong></div>',
-			'content' =>'',
+	public function getEmailRowContent( $value, $data = null, $provider = null ) {
+		$tabTitle = $this->getTabTitle( $value );
+		$loop     = $provider->getData( $data );
+
+		$markup   = [
+			'title'   => '<div class="email-content-title"><strong>' . esc_html( $tabTitle['title'] ) . '<strong></div>',
+			'content' => '',
 		];
 
 
 		$content = '';
-		foreach ($loop->posts as $key => $post){
+		foreach ( $loop->posts as $key => $post ) {
 			$product = wc_get_product( $post->ID );
 			$content .= '<div>  
-                           <a href="'. get_permalink( $post->ID ) .'">
-			                  <span class="drop__name">' . $post->post_title .'</span> - 
-			                  <span class="card-text">price: ' . $product->get_regular_price() . '</span>
+                           <a href="' . esc_url(get_permalink( $post->ID )) . '">
+			                  <span class="drop__name">' . $post->post_title . '</span> - 
+			                  <span class="card-text">' . esc_html__( 'price: ', 'up-sell-pro' ) . $product->get_price_html() . '</span>
 			                </a>
 			             <div>';
 		}
@@ -214,66 +231,67 @@ class UpSellProHelper {
 		return $markup;
 	}
 
-	public function getPopUpContent($data = null, $dataProvider = null){
-		$provider = $dataProvider->getProvider($data['type']);
-		$loop = $provider->getData($data);
+	public function getPopUpContent( $data = null, $dataProvider = null ) {
+		$provider = $dataProvider->getProvider( $data['type'] );
+		$loop     = $provider->getData( $data );
 
-		if($data['add_random'] && !$loop->have_posts() ){
-			$randomProvider = $dataProvider->getProvider('random');
-			$loop = $randomProvider->getData($data);
+		if ( $data['add_random'] && ! $loop->have_posts() ) {
+			$randomProvider = $dataProvider->getProvider( 'random' );
+			$loop           = $randomProvider->getData( $data );
 		}
 		$cart_page = $data['cart'] ? $data['cart'] : esc_url( wc_get_page_permalink( 'cart' ) );
 
-		$message   = sprintf( '<a href="%s" class="wc-forward">%s</a>',$cart_page , esc_html__( 'View cart', 'woocommerce' ) );
+		$message = sprintf( '<a href="%s" class="wc-forward">%s</a>', $cart_page, esc_html__( 'View cart', 'up-sell-pro' ) );
 		ob_start();
 		?>
-		<?php if($loop->have_posts()): ?>
-            <?php echo $message; ?>
-            <h4><?php esc_html_e($data['title']); ?></h4>
-			<div class="up-sell-products">
-				<div class="cards-list">
+		<?php if ( $loop->have_posts() ): ?>
+			<?php echo $message; ?>
+            <h4><?php esc_html_e( $data['title'] ); ?></h4>
+            <div class="up-sell-products">
+                <div class="cards-list">
 					<?php
 					while ( $loop->have_posts() ) : $loop->the_post();
 						global $post;
 						$_product = wc_get_product( get_the_ID() );
 						?>
-						<div class="card related-product related-product-id-<?php esc_attr_e(get_the_ID());  ?>"  data-price="<?php echo $_product->get_price(); ?>" >
+                        <div class="card related-product related-product-id-<?php esc_attr_e( get_the_ID() ); ?>"
+                             data-price="<?php echo esc_attr($_product->get_price()) ; ?>">
 							<?php
-							if($_product->get_sale_price()){
-								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $_product );
+							if ( $_product->get_sale_price() ) {
+								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $_product );
 							}
 							?>
-							<a  href="<?php the_permalink();  ?>">
-								<?php echo $_product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-							</a>
-							<div class="card-desc">
-								<a href="<?php the_permalink(); ?>">
-									<h4 class="up-sell-card-title">
-										<?php echo wp_kses_post( $_product->get_name() );  ?>
-									</h4>
-								</a>
+                            <a href="<?php esc_url(the_permalink()) ; ?>">
+								<?php echo $_product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            </a>
+                            <div class="card-desc">
+                                <a href="<?php esc_url(the_permalink()) ; ?>">
+                                    <h4 class="up-sell-card-title">
+										<?php echo wp_kses_post( $_product->get_name() ); ?>
+                                    </h4>
+                                </a>
                                 <div class="rating-info">
-									<?php  woocommerce_template_loop_rating(); ?>
+									<?php woocommerce_template_loop_rating(); ?>
                                 </div>
-								<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
+                                <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
 									<?php echo $_product->get_price_html(); ?>
-									<?php woocommerce_template_loop_add_to_cart( ); ?>
-								</p>
-							</div>
-						</div>
+									<?php woocommerce_template_loop_add_to_cart(); ?>
+                                </p>
+                            </div>
+                        </div>
 					<?php
 					endwhile;
 					wp_reset_query();
 					?>
-				</div>
-			</div>
+                </div>
+            </div>
 		<?php endif; ?>
 		<?php
 		return ob_get_contents();
 	}
 
-	public function ddAjax($value){
-		error_log( print_r($value, true) );
+	public function ddAjax( $value ) {
+		error_log( print_r( $value, true ) );
 	}
 
 }

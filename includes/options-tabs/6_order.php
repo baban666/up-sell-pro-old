@@ -16,6 +16,7 @@ return [array(
 				'category' => 'Category relations',
 				'tag' => 'Tag relations',
 			),
+			'default' => 'tag',
 			'radio'        => false,        // optional, true or false
 		),
 

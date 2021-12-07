@@ -1,44 +1,40 @@
 <?php
+
 namespace classes\exopite;
 
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 class UpSellProExopiteConfigProvider {
 	public $config;
 
-	public function __construct($id, $pluginName, $title = 'Settings', $config = null) {
+	public function __construct( $id, $pluginName, $title = 'Settings', $config = null ) {
 
-		if($config !== null){
+		if ( $config !== null ) {
 			$this->config = $config;
-		}else{
+		} else {
 			$settings = array(
-				'type'              => 'menu',           // Required, menu or metabox
-				'id'                => $id,              // Required, meta box id,
-				// unique per page, to save:
-				// get_option( id )
-				'parent'            => '',                   // Required, sub page to your options page
-				'submenu'           => false,
-				'menu_title'        => $title,// Required for submenu
-				'title'             => $title,               // The name in the WordPress menu and the title of the Option page
-				'option_title'      => $title,               // The title of the Option page, this will override 'title'
-				'capability'        => 'manage_options',                // The capability needed to view the page
-				'plugin_basename'   =>  plugin_basename( plugin_dir_path( __DIR__ ) . $pluginName . '.php' ),
-				// 'tabbed'            => false,                        // is tabbed or not
-				// Note: if only one section then
-				// Tabs are disabled.
-				'multilang'         => false                         // Disable mutilang support, default: true
+				'type'            => 'menu',
+				'id'              => $id,
+				'parent'          => '',
+				'icon'            => 'dashicons-chart-area',
+				'submenu'         => false,
+				'menu_title'      => $title,
+				'title'           => $title,
+				'option_title'    => $title,
+				'capability'      => 'manage_options',
+				'plugin_basename' => plugin_basename( plugin_dir_path( __DIR__ ) . $pluginName . '.php' ),
+				'multilang'       => false,
 			);
-			$this->setConfig($settings);
+			$this->setConfig( $settings );
 		}
-
 	}
 
-	public function getConfig(){
+	public function getConfig() {
 		return $this->config;
 	}
 
-	/**
-	 * @param array $config
-	 */
 	public function setConfig( $config ) {
 		$this->config = $config;
 	}

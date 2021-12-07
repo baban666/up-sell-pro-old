@@ -1,35 +1,6 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
-
-
 	$(document).ready(function(){
 		const addLink = document.querySelector('.up-sell-products .btn');
 		const addButton = document.querySelector('.up-sell-products .single_add_to_cart_button');
@@ -68,14 +39,13 @@
 			if(cards.length){
 				cards.forEach(elem => {
 					if(!elem.classList.contains('disabled')){
-						console.log(elem.dataset.price)
-
 						fullPrice += +elem.dataset.price;
 					}
 				})
 			}
 			return fullPrice;
 		}
+
 		const updatePrice = (value) => {
 			if(priceFull.childNodes.length){
 				priceFull.childNodes.forEach((item)=>{
@@ -123,7 +93,6 @@
 		});
 
 
-
 		// Track Search
 		const addSearchQuery = (searchQuery) => {
 			const search = JSON.parse(Cookies.get('up-sell-search'));
@@ -134,7 +103,6 @@
 		const escape = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 		const trackSearch = () => {
-			// const search = Cookies.get('up-sell-search');
 			$('form[role="search"]').submit(function() {
 				if(Array.isArray($(this).serializeArray()) && $(this).serializeArray()[0].value){
 					addSearchQuery(escape($(this).serializeArray()[0].value));
@@ -146,10 +114,7 @@
 			trackSearch();
 		}
 
-
-// Pop up Ajax button
-
-
+        // Pop up Ajax button
 		const popUpShow = (data) =>{
 			const body = document.querySelector('body');
 			if (!data['markup'].includes('up-sell-products')){
@@ -159,15 +124,15 @@
 				mode: 'alert',
 				title: data['title'],
 				content : data['markup'] ,
-				className : 'additionalClass',  // for additional styling, gets append on every popup div
+				className : 'additionalClass',
 				labelOk: data['continue'],
 				onOpen: () => {
 					body.classList.add('up-sell-pop-up-open');
 					localStorage.removeItem('addedToCart');
-				},      // gets called when popup is opened
+				},
 				onClose: () => {
 					body.classList.remove('up-sell-pop-up-open');
-				},      // gets called when popup is closed
+				},
 				onSubmit: () => {
 					body.classList.remove('up-sell-pop-up-open');
 				},
@@ -179,14 +144,13 @@
 			if (typeof wc_add_to_cart_params === 'undefined' && !body.classList.contains('up-sell-pro-not-ajax')) {
 				return false;
 			}
-
+		    /* global upSellPro */
 			if (!upSellPro) {
 				return false;
 			}
 
 			$('body').on('added_to_cart',function( event, fragments, cart_hash, button) {
 				const product_id = button.data('product_id');
-
 
 				if (!product_id) {
 					return false;
@@ -205,10 +169,11 @@
 						id: product_id,
 					},
 					success: function(response){
+
 						if(!response){
 							return;
 						}
-						// Redirect to cart option
+
 						if ( wc_add_to_cart_params.cart_redirect_after_add === 'yes' ) {
 							return;
 						}
@@ -226,8 +191,7 @@
 			});
 
 
-// Pop up without AJAX
-
+            // Pop up without AJAX
 			$('.woocommerce-shop.up-sell-pro-not-ajax .add_to_cart_button').on('click', function () {
 				const product_id = $(this).data('product_id');
 				localStorage.setItem('addedToCart', product_id);
@@ -235,7 +199,6 @@
 
 			const addedToCart = localStorage.getItem('addedToCart');
 			if(addedToCart){
-
 
 				$.ajax({
 					type: 'POST',
@@ -262,5 +225,4 @@
 
 			}
 		});
-
 })( jQuery );

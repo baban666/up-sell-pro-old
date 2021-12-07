@@ -3,17 +3,20 @@
 
 namespace classes\data;
 
-
 use classes\abstracts\UpSellProData;
 
-class UpSellProDataProvider extends UpSellProData{
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
-	public function __construct($settings, $helper, $providers) {
-		parent::__construct($settings, $helper, $providers);
+class UpSellProDataProvider extends UpSellProData {
+
+	public function __construct( $settings, $helper, $providers ) {
+		parent::__construct( $settings, $helper, $providers );
 	}
 
-	public function getProvider($type){
-		switch ($type) {
+	public function getProvider( $type ) {
+		switch ( $type ) {
 			case 'tags':
 				return $this->providers['tags'];
 				break;
@@ -31,7 +34,7 @@ class UpSellProDataProvider extends UpSellProData{
 		}
 	}
 
-	public function getData( $args ){
+	public function getData( $args ) {
 
 	}
 }

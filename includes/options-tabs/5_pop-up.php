@@ -53,11 +53,10 @@ return [array(
 			// 'after'       => 'Text After',   // optional
 			// 'class'       => 'text-class',   // optional
 			// 'description' => 'Description',  // optional
-			// 'default'     => 'Default Text', // optional
+			'default'     => '/cart/', // optional
 			'attributes'    => array(
 				'placeholder' => 'type link to your cart',     // optional
 				// 'data-test'   => 'test',      // optional, some extra HTML attribute(s)
-
 			),
 			'help'        => 'Help text',    // optional
 		),

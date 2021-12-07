@@ -7,8 +7,6 @@ return [array(
 	'title'  => 'Relation',
 	'icon'  => 'dashicons-rest-api',
 	'fields' => array(
-
-		// fields...
 		array(
 			'type'    => 'group',
 			'id'      => 'relation_by_category',

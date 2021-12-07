@@ -5,18 +5,22 @@ namespace classes\views;
 
 use classes\abstracts\UpSellProViewItem;
 
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 class UpSellProViewsProduct extends UpSellProViewItem {
 
-	public function __construct($settings, $helper, $dataProvider) {
-		parent::__construct($settings, $helper, $dataProvider);
+	public function __construct( $settings, $helper, $dataProvider, $version ) {
+		parent::__construct( $settings, $helper, $dataProvider, $version );
 	}
 
-	public function run(){
+	public function run() {
 		$place = $this->settings['product_page_relation_place']
 			? $this->settings['product_page_relation_place']
 			: 'woocommerce_after_single_product_summary';
 
-		if($this->settings['product_page_enable_related_products'] === 'yes'){
+		if ( $this->settings['product_page_enable_related_products'] === 'yes' ) {
 			add_action( $place, array( $this, 'render' ), 10 );
 		}
 	}
@@ -24,50 +28,50 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 	public function getArgs() {
 		return array(
 			'posts_per_page' => $this->settings['product_page_additional_products'] !== null
-                ? $this->settings['product_page_additional_products'] :
-                2,
-			'orderby' => $this->settings['product_page_relation_order'] !== null
-                ? $this->settings['product_page_relation_order']
-                : 'rand',
-			'add_random' => $this->settings['product_page_add_if_empty'] == 'yes',
-			'type' => $this->settings['product_page_relation_priority'],
+				? $this->settings['product_page_additional_products'] :
+				2,
+			'orderby'        => $this->settings['product_page_relation_order'] !== null
+				? $this->settings['product_page_relation_order']
+				: 'rand',
+			'add_random'     => $this->settings['product_page_add_if_empty'] == 'yes',
+			'type'           => $this->settings['product_page_relation_priority'],
 		);
 	}
 
-	public function render(){
+	public function render() {
 		global $product, $post;
-		$args = $this->getArgs();
-		$provider = $this->dataProvider->getProvider($args['type']);
-		$args['id'] = $product->get_id();
-		$loop = $provider->getData($args);
-		$fullPrice = $product->get_price();
-		$productPrice = $product->get_price();
+		$args          = $this->getArgs();
+		$provider      = $this->dataProvider->getProvider( $args['type'] );
+		$args['id']    = $product->get_id();
+		$loop          = $provider->getData( $args );
+		$fullPrice     = $product->get_price();
+		$productPrice  = $product->get_price();
 		$fullPriceHtml = $product->get_price_html();
-		if( $product->is_on_sale() ) {
-			$fullPriceHtml = wc_price($product->get_price());
+		if ( $product->is_on_sale() ) {
+			$fullPriceHtml = wc_price( $product->get_price() );
 		}
 
-		$relatedIDs = [$product->get_id()];
+		$relatedIDs = [ $product->get_id() ];
 
-		if($this->settings['product_page_add_if_empty'] == 'yes' && !$loop->have_posts() ){
-			$randomProvider = $this->dataProvider->getProvider('random');
-			$loop = $randomProvider->getData($args);
+		if ( $this->settings['product_page_add_if_empty'] == 'yes' && ! $loop->have_posts() ) {
+			$randomProvider = $this->dataProvider->getProvider( 'random' );
+			$loop           = $randomProvider->getData( $args );
 		}
 
 		?>
-		<?php if($loop->have_posts()): ?>
+		<?php if ( $loop->have_posts() ): ?>
             <div class="up-sell-products">
-				<?php if($this->settings['product_page_add_bundle']): ?>
+				<?php if ( $this->settings['product_page_add_bundle'] ): ?>
                     <h2 class="up-sell-products-title">
-						<?php esc_html_e($this->settings['product_page_add_bundle']); ?>
+						<?php esc_html_e( $this->settings['product_page_add_bundle'] ); ?>
                     </h2>
 				<?php endif; ?>
                 <div class="cards-list">
                     <div class="card main" data-price="<?php echo $product->get_price(); ?>">
-						<?php echo $product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo $product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php
-						if($product->get_sale_price()){
-							echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $product );
+						if ( $product->get_sale_price() ) {
+							echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $product );
 						}
 						?>
                         <div class="card-block">
@@ -75,7 +79,7 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                                 <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
                             </h4>
                             <div class="rating-info">
-		                        <?php  woocommerce_template_loop_rating(); ?>
+								<?php woocommerce_template_loop_rating(); ?>
                             </div>
                             <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
 								<?php echo $product->get_price_html(); ?>
@@ -83,33 +87,34 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                         </div>
                     </div>
                     <div class="plus">
-                        <i class="fas fa-plus"></i>
+                        <span>+</span>
                     </div>
 					<?php
 					while ( $loop->have_posts() ) : $loop->the_post();
 						global $post;
-						$_product = wc_get_product( get_the_ID() );
+						$_product  = wc_get_product( get_the_ID() );
 						$fullPrice += $_product->get_price();
-						array_push($relatedIDs, get_the_ID());
+						array_push( $relatedIDs, get_the_ID() );
 						?>
-                        <div class="card related-product related-product-id-<?php esc_attr_e(get_the_ID());  ?>"  data-price="<?php echo $_product->get_price(); ?>" >
-                            <input type="checkbox" checked data-id="<?php esc_attr_e(get_the_ID());  ?>" class="box">
+                        <div class="card related-product related-product-id-<?php esc_attr_e( get_the_ID() ); ?>"
+                             data-price="<?php echo $_product->get_price(); ?>">
+                            <input type="checkbox" checked data-id="<?php esc_attr_e( get_the_ID() ); ?>" class="box">
 							<?php
-							if($_product->get_sale_price()){
-								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'woocommerce' ) . '</span>', $post, $_product );
+							if ( $_product->get_sale_price() ) {
+								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $_product );
 							}
 							?>
-                            <a  href="<?php the_permalink();  ?>">
-								<?php echo $_product->get_image('thumbnail'); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                            <a href="<?php esc_url(the_permalink()) ; ?>">
+								<?php echo $_product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             </a>
                             <div class="card-desc">
-                                <a href="<?php the_permalink(); ?>">
+                                <a href="<?php esc_url(the_permalink()) ; ?>">
                                     <h4 class="up-sell-card-title">
-										<?php echo wp_kses_post( $_product->get_name() );  ?>
+										<?php echo wp_kses_post( $_product->get_name() ); ?>
                                     </h4>
                                 </a>
                                 <div class="rating-info">
-		                            <?php  woocommerce_template_loop_rating(); ?>
+									<?php woocommerce_template_loop_rating(); ?>
                                 </div>
                                 <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
 									<?php echo $_product->get_price_html(); ?>
@@ -122,20 +127,21 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 					?>
                 </div>
                 <div class="button-row">
-                    <a href="<?php echo get_permalink() . '?add-to-cart=' . implode(',', $relatedIDs);  ?>" class="btn">
+                    <a href="<?php echo get_permalink() . '?add-to-cart=' . implode( ',', $relatedIDs ); ?>"
+                       class="btn">
                         <button type="button" name="add-to-cart" class="single_add_to_cart_button button alt">
-							<?php esc_html_e($this->settings['product_page_add_to_cart']); ?>
+							<?php esc_html_e( $this->settings['product_page_add_to_cart'] ); ?>
                         </button>
                     </a>
-					<?php if($this->settings['product_page_add_to_cart_desc']): ?>
+					<?php if ( $this->settings['product_page_add_to_cart_desc'] ): ?>
                         <span class="full-price-line">
                             <span class="price-desc">
-                                <?php esc_html_e($this->settings['product_page_add_to_cart_desc']); ?>
+                                <?php esc_html_e( $this->settings['product_page_add_to_cart_desc'] ); ?>
                             </span>
                             <span class="price-full">
                                 <?php // esc_html_e($fullPrice); ?>
                                 <?php // echo preg_replace('/[0-9]+/', (int) $fullPrice, $fullPriceHtml); ?>
-                                <?php echo str_replace($productPrice, $fullPrice, $fullPriceHtml); ?>
+                                <?php echo str_replace( $productPrice, $fullPrice, $fullPriceHtml ); ?>
                             </span>
                         </span>
 					<?php endif; ?>
