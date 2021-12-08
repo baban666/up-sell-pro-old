@@ -7,7 +7,7 @@ function upSellProGetDefaultOptions(){
 		'general_keep_queries'                 => 5,
 		'general_track_viewed'                 => 'yes',
 		'product_page_enable_related_products' => 'yes',
-		'product_page_relation_place'          => 'woocommerce_after_single_product_summary',
+		'product_page_relation_place'          => 'woocommerce_after_single_product',
 		'product_page_additional_products'     => 2,
 		'product_page_add_bundle'              => 'Buy the bundle',
 		'product_page_add_to_cart'             => 'Add to cart',
@@ -16,10 +16,9 @@ function upSellProGetDefaultOptions(){
 		'product_page_add_if_empty'            => 'yes',
 		'product_page_relation_order'          => 'rand',
 		'cart_enable_related_products'         => 'yes',
-		'cart_relation_place'                  => 'woocommerce_after_cart_contents',
+		'cart_relation_place'                  => 'woocommerce_after_cart',
 		'cart_additional_products'             => 2,
 		'cart_add_bundle'                      => 'Buy the bundle',
-		'cart_add_to_cart_desc'                => 'Full price',
 		'cart_relation_priority'               => 'categories',
 		'cart_add_if_empty'                    => 'yes',
 		'cart_relation_order'                  => 'rand',
@@ -38,4 +37,3 @@ function upSellProGetDefaultOptions(){
 		'email_relation_order' => 'rand',
 	];
 }
-

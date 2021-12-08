@@ -110,7 +110,7 @@ class UpSellProHelper {
 
 
         $content = '';
-        if (count($data)){
+        if (count($data) && is_array($data)){
             foreach ( $data as $key => $value ) {
                 $content .= '<strong>' . esc_html( $value ) . '</strong>' . $this->getSeparator( $key, count( $data ) );
             }
@@ -140,7 +140,7 @@ class UpSellProHelper {
 
 		$content = '';
 
-		if(count($loop->posts)){
+		if(count($loop->posts) && is_array($loop->posts)){
 			foreach ( $loop->posts as $key => $post ) {
 				$product = wc_get_product( $post->ID );
 				$content .= '<div class="drop__card">
@@ -178,10 +178,10 @@ class UpSellProHelper {
 
 	public function getTabTitle( $value ) {
 		$tabs = [
-			'tag'      => [ 'title' =>  esc_html__( 'Related by Tags:', 'up-sell-pro' ), 'id' => $value ],
-			'category' => [ 'title' => esc_html__( 'Related by Categories:', 'up-sell-pro' ), 'id' => $value ],
-			'viewed'   => [ 'title' => esc_html__( 'Viewed products:', 'up-sell-pro' ), 'id' => $value ],
-			'search'   => [ 'title' => esc_html__( 'Search queries:', 'up-sell-pro' ), 'id' => $value ],
+			'tag'      => [ 'title' =>  esc_html__( 'Related by Tags', 'up-sell-pro' ), 'id' => $value ],
+			'category' => [ 'title' => esc_html__( 'Related by Categories', 'up-sell-pro' ), 'id' => $value ],
+			'viewed'   => [ 'title' => esc_html__( 'Viewed products', 'up-sell-pro' ), 'id' => $value ],
+			'search'   => [ 'title' => esc_html__( 'Search queries', 'up-sell-pro' ), 'id' => $value ],
 		];
 
 		return $tabs[ $value ];

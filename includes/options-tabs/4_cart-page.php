@@ -1,132 +1,97 @@
 <?php
-return [array(
-	'name'   => 'cart_page',
-	'title'  => 'Cart Page',
-	'icon'   => 'dashicons-cart',
-	'fields' => array(
-		array(
-			'id'      => 'cart_enable_related_products',
-			'type'    => 'switcher',
-			'title'   => esc_html__( 'Enable related products', 'plugin-name' ), // optional
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			'default' => 'yes',                                   // optional
-			'help'        => 'Help text',
-		),
-
-		array(
-			'id'      => 'cart_relation_place',
-			'type'    => 'button_bar',
-			'title'   => 'Relation place',
-			'options' => array(
-				'woocommerce_after_cart_contents'   => 'After content',
-				'woocommerce_after_cart_table'      => 'After table',
-				'woocommerce_after_cart'      => 'After cart',
+return [
+	array(
+		'name'   => 'cart_page',
+		'title'  => 'Cart Page',
+		'icon'   => 'dashicons-cart',
+		'fields' => array(
+			array(
+				'id'          => 'cart_enable_related_products',
+				'type'        => 'switcher',
+				'title'       => esc_html__( 'Enable related products', 'up-sell-pro' ),
+				'description' => esc_html__( 'Enable\Disable related products section for Cart page', 'up-sell-pro' ),
+				'default'     => 'yes',
+				'help'        => esc_html__( 'It shows Up-sell\Cross-sell products for added to Cart items and help suggest to user relevant products on Cart Page', 'up-sell-pro' ),
 			),
-			'default' => 'woocommerce_after_cart_contents',
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			'help'        => 'Help text',
-		),
 
-
-		array(
-			'id'      => 'cart_additional_products',
-			'type'    => 'range',
-			'title'   => 'Additional Products',
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			'default' => '2',                                     // optional
-			// 'unit'    => '$',                                      // optional
-			// 'after'   => ' <i class="text-muted">$ (dollars)</i>', // optional
-			'min'     => '1',                                      // optional
-			'max'     => '4',                                     // optional
-			'step'    => '1',
-			'help'        => 'Help text',    // optional
-		),
-		array(
-			'id'          => 'cart_add_bundle',
-			'type'        => 'text',
-			'title'       => 'Buy the bundle text',
-			//'prepend' => 'fa-font',             // optional
-			//'append'  => 'Char',                // optional
-			// 'before'      => 'Text Before',  // optional
-			// 'after'       => 'Text After',   // optional
-			// 'class'       => 'text-class',   // optional
-			// 'description' => 'Description',  // optional
-			'default'     => 'Buy the bundle', // optional
-			'attributes'    => array(
-				'placeholder' => 'Buy the bundle',     // optional
-				// 'data-test'   => 'test',      // optional, some extra HTML attribute(s)
-
+			array(
+				'id'          => 'cart_relation_place',
+				'type'        => 'button_bar',
+				'title'       => esc_html__( 'Relation place', 'up-sell-pro' ),
+				'options'     => array(
+					'woocommerce_after_cart_contents' => esc_html__( 'After content', 'up-sell-pro' ),
+					'woocommerce_after_cart_table'    => esc_html__( 'After table', 'up-sell-pro' ),
+					'woocommerce_after_cart'          => esc_html__( 'After cart', 'up-sell-pro' ),
+				),
+				'default'     => 'woocommerce_after_cart',
+				'description' => esc_html__( 'Place to put related products section for Cart page', 'up-sell-pro' ),
 			),
-			'help'        => 'Help text',    // optional
-		),
 
-		array(
-			'id'          => 'cart_add_to_cart_desc',
-			'type'        => 'text',
-			'title'       => 'Add to cart desc',
-			//'prepend' => 'fa-font',             // optional
-			//'append'  => 'Char',                // optional
-			// 'before'      => 'Text Before',  // optional
-			// 'after'       => 'Text After',   // optional
-			// 'class'       => 'text-class',   // optional
-			// 'description' => 'Description',  // optional
-			'default'     => 'Full price', // optional
-			'attributes'    => array(
-				'placeholder' => 'Full price:',     // optional
-				// 'data-test'   => 'test',      // optional, some extra HTML attribute(s)
+			array(
+				'id'          => 'cart_additional_products',
+				'type'        => 'range',
+				'title'       => esc_html__( 'Quantity of Products', 'up-sell-pro' ),
+				'description' => esc_html__( 'Set up the number of related products for on Cart page', 'up-sell-pro' ),
+				'default'     => '2',
+				'min'         => '1',
+				'max'         => '4',
+				'step'        => '1',
 			),
-			'help'        => 'Help text',    // optional
-		),
 
-		array(
-			'id'             => 'cart_relation_priority',
-			'type'           => 'select',
-			'title'          => 'Relation data',
-			'options'        => array(
-				'tags'          => 'Tags',
-				'categories'    => 'Categories',
-				'viewed'        => 'Viewed',
+			array(
+				'id'         => 'cart_add_bundle',
+				'type'       => 'text',
+				'title'      => esc_html__( 'Section title', 'up-sell-pro' ),
+				'default'    => esc_html__( 'Buying together often', 'up-sell-pro' ),
+				'attributes' => array(
+					'placeholder' => esc_html__( 'Put title text here', 'up-sell-pro' ),
+				),
 			),
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			//'default_option' => 'categories',     // optional
-			'default'     => 'categories',                             // optional
-			'class'       => 'chosen',                          // optional
-			'prepend'     => 'dashicons-arrow-down-alt',        // optional, add icon, text before the element
-			//'append'      => 'dashicons-admin-tools',           // optional, add icon, text after the element
-			'help'        => 'Help text',
-		),
 
-		array(
-			'id'      => 'cart_add_if_empty',
-			'type'    => 'radio',
-			'title'   => 'Add random relations',
-			'description' => esc_html__( 'Add product if relations are empty', 'plugin-name' ),
-			'options' => array(
-				'yes'   => 'Yes',
-				'no'    => 'No',
+			array(
+				'id'          => 'cart_relation_priority',
+				'type'        => 'select',
+				'title'       => esc_html__( 'Relation data', 'up-sell-pro' ),
+				'options'     => array(
+					'tags'       => esc_html__( 'Tags', 'up-sell-pro' ),
+					'categories' => esc_html__( 'Categories', 'up-sell-pro' ),
+					'viewed'     => esc_html__( 'Viewed', 'up-sell-pro' ),
+				),
+				'description' => esc_html__( 'Set up which data use for related products', 'up-sell-pro' ),
+				'default'     => 'categories',
+				'class'       => 'chosen',
+				'prepend'     => 'dashicons-arrow-down-alt',
 			),
-			'default' => 'yes',
-			'style'    => 'fancy',
-		),
 
-
-		array(
-			'id'      => 'cart_relation_order',
-			'type'    => 'button_bar',
-			'title'   => 'Order by',
-			'options' => array(
-				'rand'    => 'Random',
-				'name'    => 'Name',
-				'title'    => 'Title',
-				'date'    => 'Date',
-				'modified'    => 'Modified',
+			array(
+				'id'          => 'cart_add_if_empty',
+				'type'        => 'radio',
+				'title'       => esc_html__( 'Add random relations', 'up-sell-pro' ),
+				'description' => esc_html__( 'Add products if relations are empty or didn\'t match', 'up-sell-pro' ),
+				'options'     => array(
+					'yes' => esc_html__( 'Yes', 'up-sell-pro' ),
+					'no'  => esc_html__( 'No', 'up-sell-pro' ),
+				),
+				'default'     => 'yes',
+				'style'       => 'fancy',
 			),
-			'default' => 'rand',
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			'help'        => 'Help text',
-		),
+
+			array(
+				'id'      => 'cart_relation_order',
+				'type'    => 'button_bar',
+				'title'   => esc_html__( 'Order by', 'up-sell-pro' ),
+				'options' => array(
+					'rand'     => esc_html__( 'Random', 'up-sell-pro' ),
+					'name'     => esc_html__( 'Name', 'up-sell-pro' ),
+					'title'    => esc_html__( 'Title', 'up-sell-pro' ),
+					'date'     => esc_html__( 'Date', 'up-sell-pro' ),
+					'modified' => esc_html__( 'Modified', 'up-sell-pro' ),
+				),
+				'default' => 'rand',
+			),
+		)
 	)
-)];
+];
 
 
 

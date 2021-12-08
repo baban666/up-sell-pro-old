@@ -1,54 +1,53 @@
 <?php
-return [array(
-	'name'   => 'email',
-	'title'  => 'Email',
-	'icon'   => 'dashicons-email-alt',
-	'fields' => array(
-		array(
-			'id'        => 'email_add_to_order',
-			'type'      => 'tap_list',
-			'title'   => esc_html__( 'Add to email', 'plugin-name' ), // optional
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional 			// optional
-			'help'        => 'Help text',
-			'options'   => array(
-				'search' => 'Search queries',
-				'viewed' => 'Viewed products',
-				'category' => 'Category relations',
-				'tag' => 'Tag relations',
+return [
+	array(
+		'name'   => 'email',
+		'title'  => 'Email',
+		'icon'   => 'dashicons-email-alt',
+		'fields' => array(
+			array(
+				'id'          => 'email_add_to_order',
+				'type'        => 'tap_list',
+				'title'       => esc_html__( 'Add to order Email', 'up-sell-pro' ),
+				'description' => esc_html__( 'Chose which data type need add on Order Email', 'up-sell-pro' ),
+				'help'        => esc_html__( 'It shows Up-sell\Cross-sell recommendation and search query in Order Email to help you suggest smartly additional products  if you call to customer to confirm the order', 'up-sell-pro' ),
+				'options'     => array(
+					'search'   => esc_html__( 'Search queries', 'up-sell-pro' ),
+					'viewed'   => esc_html__( 'Viewed products', 'up-sell-pro' ),
+					'category' => esc_html__( 'Category relations', 'up-sell-pro' ),
+					'tag'      => esc_html__( 'Tag relations', 'up-sell-pro' ),
+				),
+				'radio'       => false,
+				'default'     => 'viewed',
 			),
-			'radio'        => false,
-			'default' => 'viewed',
-		),
 
-		array(
-			'id'      => 'email_order_items',
-			'type'    => 'range',
-			'title'   => 'Max items in email',
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			'default' => '5',                                     // optional
-			'min'     => '1',                                      // optional
-			'max'     => '15',                                     // optional
-			'step'    => '1',                                      // optional
-			'help'        => 'Help text',
-		),
-
-		array(
-			'id'      => 'email_relation_order',
-			'type'    => 'button_bar',
-			'title'   => 'Order by',
-			'options' => array(
-				'rand'     => 'Random',
-				'name'     => 'Name',
-				'title'    => 'Title',
-				'date'     => 'Date',
-				'modified' => 'Modified',
+			array(
+				'id'          => 'email_order_items',
+				'type'        => 'range',
+				'title'       => esc_html__( 'Quantity of items', 'up-sell-pro' ),
+				'description' => esc_html__( 'Set up the number of related products for Order Email for every data type', 'up-sell-pro' ),
+				'default'     => '5',
+				'min'         => '1',
+				'max'         => '15',
+				'step'        => '1',
 			),
-			'default' => 'rand',
-			'description' => esc_html__( 'Some description', 'plugin-name' ), // optional
-			'help'        => 'Help text',
-		),
+
+			array(
+				'id'      => 'email_relation_order',
+				'type'    => 'button_bar',
+				'title'   => esc_html__( 'Order by', 'up-sell-pro' ),
+				'options' => array(
+					'rand'     => esc_html__( 'Random', 'up-sell-pro' ),
+					'name'     => esc_html__( 'Name', 'up-sell-pro' ),
+					'title'    => esc_html__( 'Title', 'up-sell-pro' ),
+					'date'     => esc_html__( 'Date', 'up-sell-pro' ),
+					'modified' => esc_html__( 'Modified', 'up-sell-pro' ),
+				),
+				'default' => 'rand',
+			),
+		)
 	)
-)];
+];
 
 
 

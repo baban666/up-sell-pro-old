@@ -10,12 +10,14 @@ return [array(
 		array(
 			'type'    => 'group',
 			'id'      => 'relation_by_category',
-			'title'   => esc_html__( 'Relation by categories', 'plugin-name' ),
+			'title'   => esc_html__( 'Relation by categories', 'up-sell-pro' ),
+			'description' => esc_html__( 'Set up the relations between products categories', 'up-sell-pro' ),
+			'help'        => esc_html__( 'It helps to create mass relations between categories (for example: laptops->mouses, cases and etc.)', 'up-sell-pro' ),
 			'options' => array(
 				'repeater'          => true,
 				'accordion'         => true,
-				'button_title'      => esc_html__( 'Add new', 'plugin-name' ),
-				'group_title'       => esc_html__( 'Accordion Title', 'plugin-name' ),
+				'button_title'      => esc_html__( 'Add new', 'up-sell-pro' ),
+				'group_title'       => esc_html__( 'Accordion Title', 'up-sell-pro' ),
 				'limit'             => 100,
 				'sortable'          => true,
 				'mode'              => 'compact',
@@ -24,32 +26,27 @@ return [array(
 				array(
 					'id'             => 'main-category',
 					'type'           => 'select',
-					'title'          => 'Select Chosen',
+					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
 					'options'        => $upSellIncreaseHelper->getProductCategories(),
-					//'default_option' => 'Select your favorite car',     // optional
-					'default'     => '',                             // optional
-					'class'       => 'chosen',                          // optional
-					'prepend'     => 'dashicons-arrow-down-alt',        // optional, add icon, text before the element
-					// optional, add icon, text after the element
+					'default'     => '',
+					'class'       => 'chosen',
+					'prepend'     => 'dashicons-arrow-down-alt',
 					'attributes' => array(
-						// optional, create a multi select
-						'style'    => 'width: 200px; height: 125px;',   // optional
+						'style'    => 'width: 200px; height: 125px;',
 					),
 				),
 
 				array(
 					'id'             => 'up-sell-categories',
 					'type'           => 'select',
-					'title'          => 'Select Chosen',
+					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
 					'options'        => $upSellIncreaseHelper->getProductCategories(),
-					//'default_option' => 'Select your favorite car',     // optional
-					'default'     => '',                             // optional
-					'class'       => 'chosen',                          // optional
-					'prepend'     => 'dashicons-arrow-down-alt',        // optional, add icon, text before the element
-					// optional, add icon, text after the element
+					'default'     => '',
+					'class'       => 'chosen',
+					'prepend'     => 'dashicons-arrow-down-alt',
 					'attributes' => array(
-						'multiple' => 'multiple',                       // optional, create a multi select
-						'style'    => 'width: 200px; height: 125px;',   // optional
+						'multiple' => 'multiple',
+						'style'    => 'width: 200px; height: 125px;',
 					),
 				),
 
@@ -59,12 +56,14 @@ return [array(
 		array(
 			'type'    => 'group',
 			'id'      => 'relation_by_tag',
-			'title'   => esc_html__( 'Relation by tags', 'plugin-name' ),
+			'title'   => esc_html__( 'Relation by tags', 'up-sell-pro' ),
+			'description' => esc_html__( 'Set up the relations between products tags', 'up-sell-pro' ),
+			'help'        => esc_html__( 'It helps to create mass relations between tags (for example: electronics->cables, supplies and etc.)', 'up-sell-pro' ),
 			'options' => array(
 				'repeater'          => true,
 				'accordion'         => true,
-				'button_title'      => esc_html__( 'Add new', 'plugin-name' ),
-				'group_title'       => esc_html__( 'Accordion Title', 'plugin-name' ),
+				'button_title'      => esc_html__( 'Add new', 'up-sell-pro' ),
+				'group_title'       => esc_html__( 'Accordion Title', 'up-sell-pro' ),
 				'limit'             => 100,
 				'sortable'          => true,
 				'mode'              => 'compact',
@@ -73,38 +72,32 @@ return [array(
 				array(
 					'id'             => 'main-tags',
 					'type'           => 'select',
-					'title'          => 'Select Chosen',
+					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
 					'options'        => $upSellIncreaseHelper->getProductTags(),
-					//'default_option' => 'Select your favorite car',     // optional
-					'default'     => '',                             // optional
-					'class'       => 'chosen',                          // optional
-					'prepend'     => 'dashicons-arrow-down-alt',        // optional, add icon, text before the element
-					// optional, add icon, text after the element
+					'default'     => '',
+					'class'       => 'chosen',
+					'prepend'     => 'dashicons-arrow-down-alt',
 					'attributes' => array(
-						// optional, create a multi select
-						'style'    => 'width: 200px; height: 125px;',   // optional
+						'style'    => 'width: 200px; height: 125px;',
 					),
 				),
 
 				array(
 					'id'             => 'up-sell-tags',
 					'type'           => 'select',
-					'title'          => 'Select Chosen',
+					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
 					'options'        => $upSellIncreaseHelper->getProductTags(),
-					//'default_option' => 'Select your favorite car',     // optional
-					'default'     => '',                             // optional
-					'class'       => 'chosen',                          // optional
-					'prepend'     => 'dashicons-arrow-down-alt',        // optional, add icon, text before the element
-					// optional, add icon, text after the element
+					'default'     => '',
+					'class'       => 'chosen',
+					'prepend'     => 'dashicons-arrow-down-alt',
 					'attributes' => array(
-						'multiple' => 'multiple',                       // optional, create a multi select
-						'style'    => 'width: 200px; height: 125px;',   // optional
+						'multiple' => 'multiple',
+						'style'    => 'width: 200px; height: 125px;',
 					),
 				),
 
 			),
 		),
-
 	),
 )];
 

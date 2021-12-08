@@ -16,7 +16,7 @@ class UpSellProViewsOrder extends UpSellProViewItem {
 	}
 
 	public function run() {
-		if ($this->settings['order_add_to_order'] ) {
+		if (!empty($this->settings['order_add_to_order']) && is_array($this->settings['order_add_to_order']) ) {
 			foreach ( $this->settings['order_add_to_order'] as $key => $value ) {
 				if ( $value == 'search' ) {
 					add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'saveSearchQueries' ) );

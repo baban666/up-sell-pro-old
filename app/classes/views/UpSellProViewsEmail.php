@@ -16,7 +16,7 @@ class UpSellProViewsEmail extends UpSellProViewItem {
 	}
 
 	public function run() {
-		if ($this->settings['email_add_to_order'] ) {
+		if (!empty($this->settings['email_add_to_order']) ) {
 			$this->render();
 		}
 	}

@@ -67,28 +67,32 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                     </h2>
 				<?php endif; ?>
                 <div class="cards-list">
-                    <div class="card main" data-price="<?php echo $product->get_price(); ?>">
-						<?php echo $product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php
-						if ( $product->get_sale_price() ) {
-							echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $product );
-						}
-						?>
-                        <div class="card-block">
-                            <h4 class="card-title">
-                                <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
-                            </h4>
-                            <div class="rating-info">
-								<?php woocommerce_template_loop_rating(); ?>
+                    <div class="main-item">
+                        <div class="card main" data-price="<?php echo $product->get_price(); ?>">
+		                    <?php echo $product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		                    <?php
+		                    if ( $product->get_sale_price() ) {
+			                    echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $product );
+		                    }
+		                    ?>
+                            <div class="card-block">
+                                <h4 class="card-title">
+                                    <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
+                                </h4>
+                                <div class="rating-info">
+				                    <?php woocommerce_template_loop_rating(); ?>
+                                </div>
+                                <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
+				                    <?php echo $product->get_price_html(); ?>
+                                </p>
                             </div>
-                            <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
-								<?php echo $product->get_price_html(); ?>
-                            </p>
+
+                        </div>
+                        <div class="plus">
+                            <span>+</span>
                         </div>
                     </div>
-                    <div class="plus">
-                        <span>+</span>
-                    </div>
+
 					<?php
 					while ( $loop->have_posts() ) : $loop->the_post();
 						global $post;
@@ -150,6 +154,5 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 		<?php endif; ?>
 
 		<?php
-
 	}
 }
