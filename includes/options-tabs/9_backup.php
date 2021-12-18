@@ -7,7 +7,7 @@ return [array(
 
 		array(
 			'type'    => 'backup',
-			'title'   => esc_html__( 'Backup', 'exopite-seo-core' ),
+			'title'   => esc_html__( 'Backup', 'up-sell-pro' ),
 		),
 
 

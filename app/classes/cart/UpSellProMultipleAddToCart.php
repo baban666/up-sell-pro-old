@@ -22,7 +22,7 @@ class UpSellProMultipleAddToCart {
 
 		remove_action( 'wp_loaded', array( 'WC_Form_Handler', 'add_to_cart_action' ), 20 );
 
-		$product_ids = explode( ',', $_REQUEST['add-to-cart'] );
+		$product_ids = explode( ',', sanitize_text_field($_REQUEST['add-to-cart']));
 		$count       = count( $product_ids );
 		$number      = 0;
 
@@ -47,7 +47,7 @@ class UpSellProMultipleAddToCart {
 				continue;
 			}
 
-			$quantity          = empty( $_REQUEST['quantity'] ) ? 1 : wc_stock_amount( $_REQUEST['quantity'] );
+			$quantity          = empty( $_REQUEST['quantity'] ) ? 1 : wc_stock_amount( sanitize_text_field($_REQUEST['quantity']) );
 			$passed_validation = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
 
 			if ( $passed_validation && false !== WC()->cart->add_to_cart( $product_id, $quantity ) ) {

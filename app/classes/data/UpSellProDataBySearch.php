@@ -38,7 +38,7 @@ class UpSellProDataBySearch extends UpSellProDataExtractor {
 
 	public function getData( $args ) {
 		if ( isset( $_COOKIE['up-sell-search'] ) ) {
-			return array_slice( json_decode( stripslashes( $_COOKIE['up-sell-search'] ) ), '-' . $args['offset_search'] );
+			return array_slice( json_decode( sanitize_text_field( stripslashes( $_COOKIE['up-sell-search'] ) ) ), '-' . $args['offset_search'] );
 		}
 	}
 }

@@ -74,7 +74,7 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		}
 
 		$args       = $this->getArgs();
-		$args['id'] = $_POST['id'];
+		$args['id'] = sanitize_text_field($_POST['id']);
 		$row        = $this->helper->getPopUpContent( $args, $this->dataProvider );
 		ob_end_clean();
 

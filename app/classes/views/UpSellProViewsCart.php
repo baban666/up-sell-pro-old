@@ -65,7 +65,7 @@ class UpSellProViewsCart extends UpSellProViewItem {
             <div class="up-sell-products">
 				<?php if ( $this->settings['cart_add_bundle'] ): ?>
                     <h2 class="up-sell-products-title">
-						<?php esc_html_e( $this->settings['cart_add_bundle'] ); ?>
+						<?php echo esc_html( $this->settings['cart_add_bundle'] ); ?>
                     </h2>
 				<?php endif; ?>
                 <div class="cards-list">

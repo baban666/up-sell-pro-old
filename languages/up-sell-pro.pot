@@ -1,0 +1,616 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-08 22:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: up-sell-pro.php:52
+msgid ""
+"Sorry, Up Sell Pro plugin works only with Woocommerce plugin. Please, "
+"deactivate Up Sell Pro plugin or activate Woocommerce plugin"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:107
+#: app/classes/helpers/UpSellProHelper.php:184
+#: includes/options-tabs/6_order.php:14 includes/options-tabs/7_email.php:15
+msgid "Search queries"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:118
+#: app/classes/helpers/UpSellProHelper.php:161
+#: app/classes/views/UpSellProViewsEmail.php:71
+#: app/classes/views/UpSellProViewsEmail.php:78
+msgid "Nothing to show"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:156
+msgid "Price: "
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:181
+msgid "Related by Tags"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:182
+msgid "Related by Categories"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:183
+#: includes/options-tabs/6_order.php:15 includes/options-tabs/7_email.php:16
+msgid "Viewed products"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:192
+msgid "Search queries: "
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:223
+msgid "price: "
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:244
+msgid "View cart"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:261
+#: app/classes/views/UpSellProViewsCart.php:81
+#: app/classes/views/UpSellProViewsProduct.php:75
+#: app/classes/views/UpSellProViewsProduct.php:108
+msgid "Sale!"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsEmail.php:51
+msgid "Up Sell Pro Info"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:84
+msgid "Product has been added to your cart"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:85
+msgid "Continue shopping"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:89
+msgid "Access denied"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:89
+msgid "Denied"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:13
+msgid "Track search"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:14
+msgid "Enable\\Disable tracing of user's search queries on website"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:16
+msgid ""
+"It helps better understand what user looked for in shop before placing an "
+"order"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:22
+msgid "Keep queries"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:23
+msgid "Set up the number of latest search queries to keep"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:33
+msgid "Track viewed"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:34
+msgid "Enable\\Disable tracing of viewed products"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:13
+msgid "Relation by categories"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:14
+msgid "Set up the relations between products categories"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:15
+msgid ""
+"It helps to create mass relations between categories (for example: laptops-"
+">mouses, cases and etc.)"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:19
+#: includes/options-tabs/2_relation.php:65
+msgid "Add new"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:20
+#: includes/options-tabs/2_relation.php:66
+msgid "Accordion Title"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:29
+#: includes/options-tabs/2_relation.php:42
+#: includes/options-tabs/2_relation.php:75
+#: includes/options-tabs/2_relation.php:88
+msgid "Select Chosen"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:59
+msgid "Relation by tags"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:60
+msgid "Set up the relations between products tags"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:61
+msgid ""
+"It helps to create mass relations between tags (for example: electronics-"
+">cables, supplies and etc.)"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:10
+#: includes/options-tabs/4_cart-page.php:11
+msgid "Enable related products"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:11
+msgid "Enable\\Disable related products section for product detail page"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:13
+msgid ""
+"It shows Up-sell\\Cross-sell products for current item and help suggest to "
+"user relevant products"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:19
+#: includes/options-tabs/4_cart-page.php:20
+msgid "Relation place"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:21
+msgid "After product"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:22
+msgid "After summary"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:25
+msgid "Place to put related products section for product detail page"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:31
+#: includes/options-tabs/4_cart-page.php:33
+#: includes/options-tabs/5_pop-up.php:20
+msgid "Quantity of Products"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:32
+msgid "Set up the number of related products for  current item"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:42
+#: includes/options-tabs/4_cart-page.php:44
+#: includes/options-tabs/5_pop-up.php:31
+msgid "Section title"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:43
+msgid "Customers often buy together with this product"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:45
+#: includes/options-tabs/4_cart-page.php:47
+#: includes/options-tabs/5_pop-up.php:34
+msgid "Put title text here"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:52
+msgid "Button text"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:53
+msgid "Add to cart"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:55
+msgid "Put text for button here"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:62
+msgid "Price description"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:63
+msgid "Full price: "
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:65
+msgid "Put text here"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:72
+#: includes/options-tabs/4_cart-page.php:54
+#: includes/options-tabs/5_pop-up.php:52
+msgid "Relation data"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:74
+#: includes/options-tabs/4_cart-page.php:56
+#: includes/options-tabs/5_pop-up.php:54
+msgid "Tags"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:75
+#: includes/options-tabs/4_cart-page.php:57
+#: includes/options-tabs/5_pop-up.php:55
+msgid "Categories"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:76
+#: includes/options-tabs/4_cart-page.php:58
+#: includes/options-tabs/5_pop-up.php:56
+msgid "Viewed"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:78
+#: includes/options-tabs/4_cart-page.php:60
+#: includes/options-tabs/5_pop-up.php:58
+msgid "Set up which data use for related products"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:87
+#: includes/options-tabs/4_cart-page.php:69
+#: includes/options-tabs/5_pop-up.php:67
+msgid "Add random relations"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:88
+#: includes/options-tabs/4_cart-page.php:70
+#: includes/options-tabs/5_pop-up.php:68
+msgid "Add products if relations are empty or didn't match"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:101
+#: includes/options-tabs/4_cart-page.php:82
+#: includes/options-tabs/5_pop-up.php:80 includes/options-tabs/6_order.php:37
+#: includes/options-tabs/7_email.php:38
+msgid "Order by"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:103
+#: includes/options-tabs/4_cart-page.php:84
+#: includes/options-tabs/5_pop-up.php:82 includes/options-tabs/6_order.php:39
+#: includes/options-tabs/7_email.php:40
+msgid "Random"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:104
+#: includes/options-tabs/4_cart-page.php:85
+#: includes/options-tabs/5_pop-up.php:83 includes/options-tabs/6_order.php:40
+#: includes/options-tabs/7_email.php:41
+msgid "Name"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:105
+#: includes/options-tabs/4_cart-page.php:86
+#: includes/options-tabs/5_pop-up.php:84 includes/options-tabs/6_order.php:41
+#: includes/options-tabs/7_email.php:42
+msgid "Title"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:106
+#: includes/options-tabs/4_cart-page.php:87
+#: includes/options-tabs/5_pop-up.php:85 includes/options-tabs/6_order.php:42
+#: includes/options-tabs/7_email.php:43
+msgid "Date"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:107
+#: includes/options-tabs/4_cart-page.php:88
+#: includes/options-tabs/5_pop-up.php:86 includes/options-tabs/6_order.php:43
+#: includes/options-tabs/7_email.php:44
+msgid "Modified"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:12
+msgid "Enable\\Disable related products section for Cart page"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:14
+msgid ""
+"It shows Up-sell\\Cross-sell products for added to Cart items and help "
+"suggest to user relevant products on Cart Page"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:22
+msgid "After content"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:23
+msgid "After table"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:24
+msgid "After cart"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:27
+msgid "Place to put related products section for Cart page"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:34
+msgid "Set up the number of related products for on Cart page"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:45
+msgid "Buying together often"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:72
+#: includes/options-tabs/5_pop-up.php:70
+#: libs/exopite-simple-options/fields/upload.php:131
+msgid "Yes"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:73
+#: includes/options-tabs/5_pop-up.php:71
+#: libs/exopite-simple-options/fields/upload.php:129
+msgid "No"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:11
+msgid "Enable Pop Up"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:12
+msgid ""
+"Enable\\Disable related products Pop up after click add to cart on Shop page"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:14
+msgid ""
+"It shows Up-sell\\Cross-sell products after click Add to cart button and "
+"help suggest to user relevant products on Shop Page"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:21
+msgid "Set up the number of related products for Pop up"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:32
+msgid "You may also like"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:45
+msgid "Put link text here"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:10
+msgid "Add to order"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:11
+msgid "Chose which data type need add on Order Page"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:12
+msgid ""
+"It shows Up-sell\\Cross-sell recommendation and search query in Order Page "
+"to help you suggest smartly additional products  if you call to customer to "
+"confirm the order"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:16 includes/options-tabs/7_email.php:17
+msgid "Category relations"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:17 includes/options-tabs/7_email.php:18
+msgid "Tag relations"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:26 includes/options-tabs/7_email.php:27
+msgid "Quantity of items"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:27
+msgid ""
+"Set up the number of related products for Order Page for every data type"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:11
+msgid "Add to order Email"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:12
+msgid "Chose which data type need add on Order Email"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:13
+msgid ""
+"It shows Up-sell\\Cross-sell recommendation and search query in Order Email "
+"to help you suggest smartly additional products  if you call to customer to "
+"confirm the order"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:28
+msgid ""
+"Set up the number of related products for Order Email for every data type"
+msgstr ""
+
+#: includes/options-tabs/9_backup.php:10
+msgid "Backup"
+msgstr ""
+
+#: includes/options-tabs/9_help.php:11
+msgid "Information"
+msgstr ""
+
+#: includes/options-tabs/9_help.php:17
+msgid "Plugin Information"
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:711
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:734
+msgid "Settings"
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:797
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:801
+msgid "Plugin Options"
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:1501
+msgid "ERROR:"
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:1502
+msgid "This field class is not available!"
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:1574
+msgid "Saving..."
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:1574
+msgid "Saved Successfully."
+msgstr ""
+
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:1597
+#: libs/exopite-simple-options/exopite-simple-options-framework-class.php:1612
+msgid "Save Settings"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/attached.php:45
+#, php-format
+msgid "There is no attachment with type %s for this %s."
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:41
+msgid "copy-paste your backup string here"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:42
+msgid "Are you sure, you want to overwrite existing options?"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:42
+msgid "Import a Backup"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:46
+msgid "Download Backup"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:49
+msgid "Please be sure for reset all of framework options."
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:50
+msgid "Are you sure, you want to reset all options?"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/backup.php:50
+msgid "Reset All Options"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/gallery.php:25
+msgid "Add to gallery"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/gallery.php:26
+msgid "Select images for gallery"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/gallery.php:27
+msgid "Add"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/group.php:350
+msgid "Max items:"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/image.php:77
+msgid "Add Image"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/typography.php:81
+msgid "Web Safe Fonts"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/typography.php:87
+msgid "Google Fonts"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/typography.php:177
+msgid "Error! Can not load json file."
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:73
+msgid "Drop files here"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:83
+msgid "Select files"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:86
+msgid "Upload"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:90
+msgid "Processing dropped files..."
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:108
+#: libs/exopite-simple-options/fields/upload.php:140
+msgid "Cancel"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:110
+msgid "Retry"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:112
+msgid "Delete"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:121
+msgid "Close"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:142
+msgid "Ok"
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:181
+msgid "Max amount of files: "
+msgstr ""
+
+#: libs/exopite-simple-options/fields/upload.php:182
+msgid "Max file upload size: "
+msgstr ""
+
+#: libs/exopite-simple-options/fields/video.php:74
+msgid "Add Video"
+msgstr ""

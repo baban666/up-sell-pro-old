@@ -24,6 +24,58 @@ class UpSellProHelper {
 		return $output;
 	}
 
+	public function allowedHtml( $string ) {
+		$allowed_html = [
+			'b'      => [],
+			's'      => [],
+			'strong' => [],
+			'i'      => [],
+			'u'      => [],
+			'br'     => [],
+			'em'     => [],
+			'del'    => [],
+			'ins'    => [],
+			'sup'    => [],
+			'sub'    => [],
+			'code'   => [],
+			'small'  => [],
+			'strike' => [],
+			'abbr'   => [
+				'title' => [],
+			],
+			'div'   => [
+				'class' => [],
+				'data-tab' => [],
+			],
+			'li'   => [
+				'class' => [],
+				'data-tab' => [],
+			],
+			'span'   => [
+				'class' => [],
+			],
+			'a'      => [
+				'href'  => [],
+				'title' => [],
+				'class' => [],
+				'id'    => [],
+			],
+			'img'    => [
+				'src'    => [],
+				'alt'    => [],
+				'height' => [],
+				'width'  => [],
+			],
+			'hr'     => [],
+            'h1'     => [],
+			'id'     => [],
+		];
+
+		return wp_kses( $string, $allowed_html );
+	}
+
+
+
 	public function getProductTags() {
 		$output = array();
 		$tags   = get_terms( array(
@@ -245,8 +297,8 @@ class UpSellProHelper {
 		ob_start();
 		?>
 		<?php if ( $loop->have_posts() ): ?>
-			<?php echo $message; ?>
-            <h4><?php esc_html_e( $data['title'] ); ?></h4>
+			<?php echo $this->allowedHtml($message) ; ?>
+            <h4><?php echo esc_html( $data['title']); ?></h4>
             <div class="up-sell-products">
                 <div class="cards-list">
 					<?php

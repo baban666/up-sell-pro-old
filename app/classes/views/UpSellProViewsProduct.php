@@ -63,7 +63,7 @@ class UpSellProViewsProduct extends UpSellProViewItem {
             <div class="up-sell-products">
 				<?php if ( $this->settings['product_page_add_bundle'] ): ?>
                     <h2 class="up-sell-products-title">
-						<?php esc_html_e( $this->settings['product_page_add_bundle'] ); ?>
+						<?php echo esc_html( $this->settings['product_page_add_bundle']); ?>
                     </h2>
 				<?php endif; ?>
                 <div class="cards-list">
@@ -134,17 +134,15 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                     <a href="<?php echo get_permalink() . '?add-to-cart=' . implode( ',', $relatedIDs ); ?>"
                        class="btn">
                         <button type="button" name="add-to-cart" class="single_add_to_cart_button button alt">
-							<?php esc_html_e( $this->settings['product_page_add_to_cart'] ); ?>
+							<?php echo esc_html( $this->settings['product_page_add_to_cart'] ); ?>
                         </button>
                     </a>
 					<?php if ( $this->settings['product_page_add_to_cart_desc'] ): ?>
                         <span class="full-price-line">
                             <span class="price-desc">
-                                <?php esc_html_e( $this->settings['product_page_add_to_cart_desc'] ); ?>
+                                <?php echo esc_html( $this->settings['product_page_add_to_cart_desc'] ); ?>
                             </span>
                             <span class="price-full">
-                                <?php // esc_html_e($fullPrice); ?>
-                                <?php // echo preg_replace('/[0-9]+/', (int) $fullPrice, $fullPriceHtml); ?>
                                 <?php echo str_replace( $productPrice, $fullPrice, $fullPriceHtml ); ?>
                             </span>
                         </span>

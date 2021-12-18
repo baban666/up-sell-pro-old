@@ -79,7 +79,7 @@ class UpSellProViewsEmail extends UpSellProViewItem {
 				}
 			}
 
-			echo $output;
+			echo $this->helper->allowedHtml( $output ) ;
 		}
 
 
