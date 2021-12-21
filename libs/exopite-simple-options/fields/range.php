@@ -35,6 +35,7 @@ if ( ! class_exists( 'Exopite_Simple_Options_Framework_Field_range' ) ) {
 			$unit    = ( isset( $this->field['unit'] ) ) ? '<em>' . $this->field['unit'] . '</em>' : '';
 			$classes = ( isset( $this->field['class'] ) ) ? implode( ' ', explode( ' ', $this->field['class'] ) ) : '';
 
+
 			echo $this->element_before();
 
 			echo '<input type="range" name="' . $this->element_name() . '" oninput="updateRangeInput(this)" class="range ' . $classes . '"' . $attrs . ' value="' . $this->element_value() . '"' . $this->element_attributes() . '>' . $unit;

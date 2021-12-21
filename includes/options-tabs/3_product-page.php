@@ -21,6 +21,7 @@ return [array(
 				'woocommerce_after_single_product'          => esc_html__( 'After product', 'up-sell-pro' ),
 				'woocommerce_after_single_product_summary'  => esc_html__( 'After summary', 'up-sell-pro' ),
 			),
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 			'default' => 'woocommerce_after_single_product',
 			'description' => esc_html__( 'Place to put related products section for product detail page', 'up-sell-pro' ),
 		),
@@ -34,6 +35,7 @@ return [array(
 			'min'     => '1',
 			'max'     => '3',
 			'step'    => '1',
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 
 		array(
@@ -44,6 +46,7 @@ return [array(
 			'attributes'    => array(
 				'placeholder' => esc_html__( 'Put title text here', 'up-sell-pro' ),
 			),
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 
 		array(
@@ -54,6 +57,7 @@ return [array(
 			'attributes'    => array(
 				'placeholder' => esc_html__( 'Put text for button here', 'up-sell-pro' ),
 			),
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 
 		array(
@@ -64,6 +68,7 @@ return [array(
 			'attributes'    => array(
 				'placeholder' => esc_html__( 'Put text here', 'up-sell-pro' ),
 			),
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 
 		array(
@@ -79,6 +84,7 @@ return [array(
 			'default'     => 'categories',
 			'class'       => 'chosen',
 			'prepend'     => 'dashicons-arrow-down-alt',
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 
 		array(
@@ -92,6 +98,7 @@ return [array(
 			),
 			'default' => 'yes',
 			'style'    => 'fancy',
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 
 
@@ -107,6 +114,7 @@ return [array(
 				'modified'    => esc_html__( 'Modified', 'up-sell-pro' ),
 			),
 			'default' => 'rand',
+			'dependency' => array( 'product_page_enable_related_products', '==', 'true' ),
 		),
 	)
 )];

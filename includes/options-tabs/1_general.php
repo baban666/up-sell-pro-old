@@ -25,6 +25,7 @@ return [array(
 			'min'     => '1',
 			'max'     => '15',
 			'step'    => '1',
+			'dependency' => array( 'general_track_search', '==', 'true' ),
 		),
 
 		array(

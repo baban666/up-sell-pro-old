@@ -9,6 +9,7 @@ if ( ! defined( 'WPINC' ) ) {
 class UpSellProSettings {
 	public $allSettings;
 
+
 	public function __construct( $allPluginsSettings ) {
 		$this->setAllSettings( $allPluginsSettings );
 		if (!$this->allSettings){
