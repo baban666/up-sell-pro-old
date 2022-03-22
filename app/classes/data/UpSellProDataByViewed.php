@@ -24,16 +24,16 @@ class UpSellProDataByViewed extends UpSellProDataExtractor {
 
 	function trackViewProducts() {
 
-		if ( ! is_singular( 'product' ) /* xnagyg: remove this condition to run: || ! is_active_widget( false, false, 'woocommerce_recently_viewed_products', true )*/ ) {
+		if ( ! is_singular( 'product' )) {
 			return;
 		}
 
 		global $post;
 
-		if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) ) { // @codingStandardsIgnoreLine.
+		if ( empty( $_COOKIE['woocommerce_recently_viewed'] ) ) {
 			$viewed_products = array();
 		} else {
-			$viewed_products = wp_parse_id_list( (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) ); // @codingStandardsIgnoreLine.
+			$viewed_products = wp_parse_id_list( (array) explode( '|', sanitize_text_field( wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) ) );
 		}
 
 		$keys = array_flip( $viewed_products );
@@ -52,7 +52,7 @@ class UpSellProDataByViewed extends UpSellProDataExtractor {
 	}
 
 	public function getArgs( $values ) {
-		$viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', wp_unslash( $_COOKIE['woocommerce_recently_viewed'] ) ) : array(); // @codingStandardsIgnoreLine
+		$viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', sanitize_text_field(wp_unslash( $_COOKIE['woocommerce_recently_viewed'] )) ) : array();
 
 		$keys = array_flip( $viewed_products );
 		if ( isset( $keys[ $values['id'] ] ) ) {

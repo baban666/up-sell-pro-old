@@ -20,7 +20,7 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 			? $this->settings['product_page_relation_place']
 			: 'woocommerce_after_single_product_summary';
 
-		if ( $this->settings['product_page_enable_related_products'] === 'yes' ) {
+		if ( $this->settings['product_page_enable_related_products'] ) {
 			add_action( $place, array( $this, 'render' ), 10 );
 		}
 	}
@@ -63,27 +63,27 @@ class UpSellProViewsProduct extends UpSellProViewItem {
             <div class="up-sell-products">
 				<?php if ( $this->settings['product_page_add_bundle'] ): ?>
                     <h2 class="up-sell-products-title">
-						<?php esc_html_e( $this->settings['product_page_add_bundle'] ); ?>
+						<?php echo esc_html( $this->settings['product_page_add_bundle'] ); ?>
                     </h2>
 				<?php endif; ?>
                 <div class="cards-list">
                     <div class="main-item">
                         <div class="card main" data-price="<?php echo $product->get_price(); ?>">
-		                    <?php echo $product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		                    <?php
-		                    if ( $product->get_sale_price() ) {
-			                    echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $product );
-		                    }
-		                    ?>
+							<?php echo $product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php
+							if ( $product->get_sale_price() ) {
+								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $product );
+							}
+							?>
                             <div class="card-block">
                                 <h4 class="card-title">
                                     <span class="product-title"><?php echo wp_kses_post( $product->get_name() ); ?></span>
                                 </h4>
                                 <div class="rating-info">
-				                    <?php woocommerce_template_loop_rating(); ?>
+									<?php woocommerce_template_loop_rating(); ?>
                                 </div>
                                 <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'card-price' ) ); ?>">
-				                    <?php echo $product->get_price_html(); ?>
+									<?php echo $product->get_price_html(); ?>
                                 </p>
                             </div>
 
@@ -100,19 +100,20 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 						$fullPrice += $_product->get_price();
 						array_push( $relatedIDs, get_the_ID() );
 						?>
-                        <div class="card related-product related-product-id-<?php esc_attr_e( get_the_ID() ); ?>"
+                        <div class="card related-product related-product-id-<?php echo esc_attr( get_the_ID() ); ?>"
                              data-price="<?php echo $_product->get_price(); ?>">
-                            <input type="checkbox" checked data-id="<?php esc_attr_e( get_the_ID() ); ?>" class="box">
+                            <input type="checkbox" checked data-id="<?php echo esc_attr( get_the_ID() ); ?>"
+                                   class="box">
 							<?php
 							if ( $_product->get_sale_price() ) {
 								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $_product );
 							}
 							?>
-                            <a href="<?php esc_url(the_permalink()) ; ?>">
+                            <a href="<?php esc_url( the_permalink() ); ?>">
 								<?php echo $_product->get_image( 'thumbnail' ); // PHPCS:Ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             </a>
                             <div class="card-desc">
-                                <a href="<?php esc_url(the_permalink()) ; ?>">
+                                <a href="<?php esc_url( the_permalink() ); ?>">
                                     <h4 class="up-sell-card-title">
 										<?php echo wp_kses_post( $_product->get_name() ); ?>
                                     </h4>
@@ -134,18 +135,19 @@ class UpSellProViewsProduct extends UpSellProViewItem {
                     <a href="<?php echo get_permalink() . '?add-to-cart=' . implode( ',', $relatedIDs ); ?>"
                        class="btn">
                         <button type="button" name="add-to-cart" class="single_add_to_cart_button button alt">
-							<?php esc_html_e( $this->settings['product_page_add_to_cart'] ); ?>
+							<?php echo esc_html( $this->settings['product_page_add_to_cart'] ); ?>
                         </button>
                     </a>
 					<?php if ( $this->settings['product_page_add_to_cart_desc'] ): ?>
                         <span class="full-price-line">
                             <span class="price-desc">
-                                <?php esc_html_e( $this->settings['product_page_add_to_cart_desc'] ); ?>
+                                <?php echo esc_html( $this->settings['product_page_add_to_cart_desc'] ); ?>
                             </span>
-                            <span class="price-full">
-                                <?php // esc_html_e($fullPrice); ?>
-                                <?php // echo preg_replace('/[0-9]+/', (int) $fullPrice, $fullPriceHtml); ?>
-                                <?php echo str_replace( $productPrice, $fullPrice, $fullPriceHtml ); ?>
+                            <span class="price-full"
+                                  data-thousand="<?php echo esc_attr( wc_get_price_thousand_separator() ); ?>"
+                                  data-decimal="<?php echo esc_attr( wc_get_price_decimal_separator() ); ?>"
+                                  data-num="<?php echo esc_attr( wc_get_price_decimals() ); ?>">
+                                <?php echo sprintf( get_woocommerce_price_format(), get_woocommerce_currency_symbol(), $fullPrice ); ?>
                             </span>
                         </span>
 					<?php endif; ?>

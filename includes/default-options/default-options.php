@@ -1,39 +1,51 @@
 <?php
 
 
-function upSellProGetDefaultOptions(){
-	return [
-		'general_track_search'                 => 'yes',
+function upSellProGetDefaultOptions() {
+	return array(
+		'general_track_search'                 => 1,
 		'general_keep_queries'                 => 5,
-		'general_track_viewed'                 => 'yes',
-		'product_page_enable_related_products' => 'yes',
+		'general_track_viewed'                 => 1,
+		'relation_by_category'                 => null,
+		'relation_by_tag'                      => null,
+		'product_page_enable_related_products' => 1,
 		'product_page_relation_place'          => 'woocommerce_after_single_product',
 		'product_page_additional_products'     => 2,
-		'product_page_add_bundle'              => 'Buy the bundle',
+		'product_page_add_bundle'              => 'Customers often buy together with this product',
 		'product_page_add_to_cart'             => 'Add to cart',
-		'product_page_add_to_cart_desc'        => 'Full price',
+		'product_page_add_to_cart_desc'        => 'Full price:',
 		'product_page_relation_priority'       => 'categories',
 		'product_page_add_if_empty'            => 'yes',
 		'product_page_relation_order'          => 'rand',
-		'cart_enable_related_products'         => 'yes',
+		'cart_enable_related_products'         => 1,
 		'cart_relation_place'                  => 'woocommerce_after_cart',
 		'cart_additional_products'             => 2,
-		'cart_add_bundle'                      => 'Buy the bundle',
+		'cart_add_bundle'                      => 'Buying together often',
 		'cart_relation_priority'               => 'categories',
 		'cart_add_if_empty'                    => 'yes',
 		'cart_relation_order'                  => 'rand',
-		'pop_enable_related_products'          => 'yes',
+		'pop_enable_related_products'          => 1,
 		'pop_additional_products'              => 2,
-		'pop_add_bundle'                       => 'Buy the bundle',
+		'pop_add_bundle'                       => 'You may also like',
 		'pop_cart_link'                        => '/cart/',
 		'pop_relation_priority'                => 'categories',
 		'pop_add_if_empty'                     => 'yes',
 		'pop_relation_order'                   => 'rand',
-		'order_add_to_order'                   => [ '0' => 'tag' ],
+		'order_add_to_order'                   => array(
+			'0' => 'search',
+			'1' => 'viewed',
+			'2' => 'category',
+			'3' => 'tag',
+		),
 		'order_order_items'                    => 5,
 		'order_relation_order'                 => 'rand',
-		'email_add_to_order'                   => [ '0' => 'viewed' ],
-		'email_order_items'    => 5,
-		'email_relation_order' => 'rand',
-	];
+		'email_add_to_order'                   => array(
+			'0' => 'search',
+			'1' => 'viewed',
+			'2' => 'category',
+			'3' => 'tag',
+		),
+		'email_order_items'                    => 5,
+		'email_relation_order'                 => 'rand',
+	);
 }

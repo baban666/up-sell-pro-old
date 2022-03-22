@@ -78,8 +78,7 @@ class UpSellProViewsEmail extends UpSellProViewItem {
 					$output   .= !empty($row['content']) ? $row['content'] : esc_html__('Nothing to show', 'up-sell-pro');
 				}
 			}
-
-			echo $output;
+			echo wp_kses( $output, $this->helper->getAllowedTags());
 		}
 
 

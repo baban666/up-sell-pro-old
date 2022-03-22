@@ -25,10 +25,10 @@ class Up_Sell_Pro_Public {
 	}
 
 	public function enqueue_scripts() {
-
+		wp_enqueue_script( 'js-cookie', plugin_dir_url( __FILE__ ) . 'js/js.cookie.js', array(), '2.1.4', true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/up-sell-pro-public.js', array(
 			'jquery',
-			'popupS'
+			'js-cookie',
 		), $this->version, true );
 
 	}

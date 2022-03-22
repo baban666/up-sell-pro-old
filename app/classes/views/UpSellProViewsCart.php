@@ -20,7 +20,7 @@ class UpSellProViewsCart extends UpSellProViewItem {
 			? $this->settings['cart_relation_place']
 			: 'woocommerce_after_cart_contents';
 
-		if ( $this->settings['cart_enable_related_products'] === 'yes' ) {
+		if ( $this->settings['cart_enable_related_products'] ) {
 			add_action( $place, array( $this, 'render' ), 10 );
 		}
 	}
@@ -65,7 +65,7 @@ class UpSellProViewsCart extends UpSellProViewItem {
             <div class="up-sell-products">
 				<?php if ( $this->settings['cart_add_bundle'] ): ?>
                     <h2 class="up-sell-products-title">
-						<?php esc_html_e( $this->settings['cart_add_bundle'] ); ?>
+						<?php echo esc_html( $this->settings['cart_add_bundle'] ); ?>
                     </h2>
 				<?php endif; ?>
                 <div class="cards-list">
@@ -74,8 +74,8 @@ class UpSellProViewsCart extends UpSellProViewItem {
 						global $post;
 						$_product = wc_get_product( get_the_ID() );
 						?>
-                        <div class="card related-product related-product-id-<?php esc_attr_e( get_the_ID() ); ?>"
-                             data-price="<?php esc_attr_e($_product->get_price()) ; ?>">
+                        <div class="card related-product related-product-id-<?php echo esc_attr( get_the_ID() ); ?>"
+                             data-price="<?php echo esc_attr($_product->get_price()) ; ?>">
 							<?php
 							if ( $_product->get_sale_price() ) {
 								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $_product );

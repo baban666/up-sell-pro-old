@@ -12,6 +12,7 @@ use classes\exopite\UpSellProExopiteFieldsProvider;
 use classes\exopite\UpSellProExopitePluginOptions;
 use classes\exopite\UpSellProSettings;
 use classes\helpers\UpSellProHelper;
+use classes\settings\UpSellProPluginSettings;
 use classes\views\UpSellProViewsCart;
 use classes\views\UpSellProViewsEmail;
 use classes\views\UpSellProViewsOrder;
@@ -68,7 +69,7 @@ class Up_Sell_Pro {
 		/**
 		 * The libs.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/exopite-simple-options/exopite-simple-options-framework-class.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -87,12 +88,9 @@ class Up_Sell_Pro {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/default-options/default-options.php';
 
 
-		$configProvider = new UpSellProExopiteConfigProvider($this->plugin_name, $this->plugin_name, 'Up Sell Pro');
-		$fieldsProvider = new UpSellProExopiteFieldsProvider();
-		$options = new UpSellProExopitePluginOptions($configProvider, $fieldsProvider);
-		$options->init();
 
-		$allSettings =  new UpSellProSettings(get_exopite_sof_option($this->plugin_name));
+		$allSettings = new UpSellProPluginSettings($this->plugin_name, 'Up Sell Pro', upSellProGetDefaultOptions());
+		$allSettings->init();
 
 		$helper = new UpSellProHelper();
 

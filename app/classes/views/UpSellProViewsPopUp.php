@@ -16,7 +16,8 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 	}
 
 	public function run() {
-		if ( $this->settings['pop_enable_related_products'] === 'yes' ) {
+
+		if ( $this->settings['pop_enable_related_products'] ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'localize' ), 99 );
 			add_filter( 'body_class', array( $this, 'addBodyClasses' ) );
 			add_action( 'wp_ajax_popUpResponse', array( $this, 'render' ) );
@@ -74,7 +75,7 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		}
 
 		$args       = $this->getArgs();
-		$args['id'] = $_POST['id'];
+		$args['id'] = sanitize_text_field($_POST['id']);
 		$row        = $this->helper->getPopUpContent( $args, $this->dataProvider );
 		ob_end_clean();
 

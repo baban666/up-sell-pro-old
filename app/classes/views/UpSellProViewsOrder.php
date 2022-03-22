@@ -91,10 +91,10 @@ class UpSellProViewsOrder extends UpSellProViewItem {
 		?>
         <div class="up-sell-pro-tabs">
             <ul class="tabs__button-group">
-                <?php echo $tabs; ?>
+                <?php echo wp_kses( $tabs, $this->helper->getAllowedTags()); ?>
             </ul>
             <ul class="tabs__container">
-                <?php echo $tabsContent; ?>
+                <?php echo wp_kses( $tabsContent, $this->helper->getAllowedTags()) ; ?>
             </ul>
         </div>
 		<?php
@@ -102,7 +102,7 @@ class UpSellProViewsOrder extends UpSellProViewItem {
 
 
 	public function render() {
-		add_meta_box( 'up_sell_pro_info', __( 'Up Sell Pro Info', 'up-sell-pro' ), array(
+		add_meta_box( 'up_sell_pro_info', esc_html( 'Up Sell Pro Info', 'up-sell-pro' ), array(
 			$this,
 			'renderTabs'
 		), 'shop_order', 'normal', 'core' );

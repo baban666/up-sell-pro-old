@@ -2,101 +2,80 @@
 use classes\helpers\UpSellProHelper;
 
 $upSellIncreaseHelper = new UpSellProHelper();
+
 return [array(
 	'name'   => 'relation',
 	'title'  => 'Relation',
-	'icon'  => 'dashicons-rest-api',
+	'icon'  => 'fas fa-sitemap',
 	'fields' => array(
+
 		array(
-			'type'    => 'group',
+			'type'    => 'repeater',
 			'id'      => 'relation_by_category',
 			'title'   => esc_html__( 'Relation by categories', 'up-sell-pro' ),
-			'description' => esc_html__( 'Set up the relations between products categories', 'up-sell-pro' ),
+			'subtitle' => esc_html__( 'Set up the relations between products categories', 'up-sell-pro' ),
 			'help'        => esc_html__( 'It helps to create mass relations between categories (for example: laptops->mouses, cases and etc.)', 'up-sell-pro' ),
-			'options' => array(
-				'repeater'          => true,
-				'accordion'         => true,
-				'button_title'      => esc_html__( 'Add new', 'up-sell-pro' ),
-				'group_title'       => esc_html__( 'Accordion Title', 'up-sell-pro' ),
-				'limit'             => 100,
-				'sortable'          => true,
-				'mode'              => 'compact',
-			),
+			'max' => 40,
+			'button_title' =>  esc_html__( 'Add Relation', 'up-sell-pro' ),
 			'fields'  => array(
 				array(
-					'id'             => 'main-category',
-					'type'           => 'select',
-					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
-					'options'        => $upSellIncreaseHelper->getProductCategories(),
-					'default'     => '',
-					'class'       => 'chosen',
-					'prepend'     => 'dashicons-arrow-down-alt',
-					'attributes' => array(
-						'style'    => 'width: 200px; height: 125px;',
-					),
+					'id'          => 'main-category',
+					'type'        => 'select',
+					'title'       => esc_html__( 'Main category', 'up-sell-pro' ),
+					'chosen'      => true,
+					'placeholder' => esc_html__( 'Select category', 'up-sell-pro' ),
+					'options'     => $upSellIncreaseHelper->getProductCategories(),
 				),
-
 				array(
-					'id'             => 'up-sell-categories',
-					'type'           => 'select',
-					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
-					'options'        => $upSellIncreaseHelper->getProductCategories(),
-					'default'     => '',
-					'class'       => 'chosen',
-					'prepend'     => 'dashicons-arrow-down-alt',
-					'attributes' => array(
-						'multiple' => 'multiple',
-						'style'    => 'width: 200px; height: 125px;',
-					),
+					'id'          => 'up-sell-categories',
+					'type'        => 'select',
+					'title'       => esc_html__( 'Related categories', 'up-sell-pro' ),
+					'placeholder' => esc_html__( 'Select categories', 'up-sell-pro' ),
+					'chosen'      => true,
+					'ajax'        => true,
+					'multiple'    => true,
+					'sortable'    => true,
+					'options'     => $upSellIncreaseHelper->getProductCategories(),
 				),
-
 			),
 		),
 
 		array(
-			'type'    => 'group',
+			'type'    => 'repeater',
 			'id'      => 'relation_by_tag',
 			'title'   => esc_html__( 'Relation by tags', 'up-sell-pro' ),
-			'description' => esc_html__( 'Set up the relations between products tags', 'up-sell-pro' ),
+			'subtitle' => esc_html__( 'Set up the relations between products tags', 'up-sell-pro' ),
 			'help'        => esc_html__( 'It helps to create mass relations between tags (for example: electronics->cables, supplies and etc.)', 'up-sell-pro' ),
-			'options' => array(
-				'repeater'          => true,
-				'accordion'         => true,
-				'button_title'      => esc_html__( 'Add new', 'up-sell-pro' ),
-				'group_title'       => esc_html__( 'Accordion Title', 'up-sell-pro' ),
-				'limit'             => 100,
-				'sortable'          => true,
-				'mode'              => 'compact',
-			),
+			'max' => 40,
+			'button_title' =>  esc_html__( 'Add Relation', 'up-sell-pro' ),
 			'fields'  => array(
 				array(
-					'id'             => 'main-tags',
-					'type'           => 'select',
-					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
-					'options'        => $upSellIncreaseHelper->getProductTags(),
-					'default'     => '',
-					'class'       => 'chosen',
-					'prepend'     => 'dashicons-arrow-down-alt',
-					'attributes' => array(
-						'style'    => 'width: 200px; height: 125px;',
-					),
+					'id'          => 'main-tags',
+					'type'        => 'select',
+					'title'       => esc_html__( 'Main tag', 'up-sell-pro' ),
+					'chosen'      => true,
+					'placeholder' => esc_html__( 'Select tag', 'up-sell-pro' ),
+					'options'     => $upSellIncreaseHelper->getProductTags(),
 				),
-
 				array(
-					'id'             => 'up-sell-tags',
-					'type'           => 'select',
-					'title'          => esc_html__( 'Select Chosen', 'up-sell-pro' ),
-					'options'        => $upSellIncreaseHelper->getProductTags(),
-					'default'     => '',
-					'class'       => 'chosen',
-					'prepend'     => 'dashicons-arrow-down-alt',
-					'attributes' => array(
-						'multiple' => 'multiple',
-						'style'    => 'width: 200px; height: 125px;',
-					),
+					'id'          => 'up-sell-tags',
+					'type'        => 'select',
+					'title'       => esc_html__( 'Related tags', 'up-sell-pro' ),
+					'placeholder' => esc_html__( 'Select tags', 'up-sell-pro' ),
+					'chosen'      => true,
+					'ajax'        => true,
+					'multiple'    => true,
+					'sortable'    => true,
+					'options'     => $upSellIncreaseHelper->getProductTags(),
 				),
-
 			),
+		),
+
+		// A Notice
+		array(
+			'type'    => 'submessage',
+			'style'   => 'normal',
+			'content' => esc_html__( 'You can add up to 40 relations for every type', 'up-sell-pro' ),
 		),
 	),
 )];

@@ -29,7 +29,7 @@ class UpSellProDataBySearch extends UpSellProDataExtractor {
 	}
 
 	public function run() {
-		if ( $this->settings['general_track_search'] == 'yes' ) {
+		if ( $this->settings['general_track_search']) {
 			add_action( 'init', array( $this, 'enableTrackSearch' ) );
 		} else {
 			add_action( 'init', array( $this, 'disableTrackSearch' ) );
@@ -38,7 +38,7 @@ class UpSellProDataBySearch extends UpSellProDataExtractor {
 
 	public function getData( $args ) {
 		if ( isset( $_COOKIE['up-sell-search'] ) ) {
-			return array_slice( json_decode( stripslashes( $_COOKIE['up-sell-search'] ) ), '-' . $args['offset_search'] );
+			return array_slice( json_decode( sanitize_text_field( stripslashes( $_COOKIE['up-sell-search'] ) ) ), '-' . $args['offset_search'] );
 		}
 	}
 }

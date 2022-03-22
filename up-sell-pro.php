@@ -5,10 +5,12 @@
  * Plugin URI:        https://demo-up-sell-pro.5588.by/
  * Description:       Up Sell Pro is an easy and powerful plugin to set up upsell and cross-sell for your WooCommerce shop. This is up-selling, cross-selling plugin for WooCommerce helps you Increase revenue as well as profitability for your eCommerce website.
  * Version:           1.0.0
- * Author:            SellExpert
- * Author URI:        https://codecanyon.net/user/sellexpert
+ * Author:            AliceThemes
+ * Author URI:        https://veraksoff.info
  * Text Domain:       up-sell-pro
  * Domain Path:       /languages
+ * Requires PHP: 7.0
+ * Tags: bulk crosssells, bulk upsells, cross-sells, crosssells, crosssells copy, mass crosssells, mass upsells, up-sells, upsells, woocommerce, woocommerce bulk up-sells and cross-sells, boost sales for woocommerce, marketing plugin, upsells popups, woocommerce display cross sells on product page
  */
 
 // If this file is called directly, abort.
@@ -54,8 +56,8 @@ function up_sell_pro_general_admin_notice(){
 	}
 }
 
-if ( !in_array('woocommerce/woocommerce.php', get_option('active_plugins'))   ) {
-	add_action('admin_notices', 'up_sell_pro_general_admin_notice');
-} else{
+if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	run_up_sell_pro();
+} else{
+	add_action('admin_notices', 'up_sell_pro_general_admin_notice');
 }
