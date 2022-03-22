@@ -1,7 +1,7 @@
 <?php
 return [array(
 	'name'   => 'order',
-	'title'  => 'Order',
+	'title'  => esc_html__( 'Order', 'up-sell-pro' ),
 	'icon'   => 'fas fa-file-invoice',
 	'fields' => array(
 

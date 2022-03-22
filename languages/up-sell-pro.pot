@@ -1,0 +1,548 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Up Sell Pro\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-22 17:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.2\n"
+"X-Domain: up-sell-pro"
+
+#: app/classes/views/UpSellProViewsPopUp.php:90
+msgid "Access denied"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:87
+#: includes/options-tabs/4_cart-page.php:71
+#: includes/options-tabs/5_pop-up.php:66
+msgid "Add products if relations are empty or didn't match"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:86
+#: includes/options-tabs/4_cart-page.php:70
+#: includes/options-tabs/5_pop-up.php:65
+msgid "Add random relations"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:19
+#: includes/options-tabs/2_relation.php:50
+msgid "Add Relation"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:54
+msgid "Add to cart"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:11
+msgid "Add to order"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:11
+msgid "Add to order Email"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:24
+msgid "After cart"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:22
+msgid "After content"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:21
+msgid "After product"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:22
+msgid "After summary"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:23
+msgid "After table"
+msgstr ""
+
+#. Author of the plugin
+msgid "AliceThemes"
+msgstr ""
+
+#: includes/options-tabs/9_backup.php:4 includes/options-tabs/9_backup.php:10
+msgid "Backup"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:53
+msgid "Button text"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:47
+msgid "Buying together often"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:41
+msgid "Cart link"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:5
+msgid "Cart Page"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:74
+#: includes/options-tabs/4_cart-page.php:58
+#: includes/options-tabs/5_pop-up.php:53
+msgid "Categories"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:17 includes/options-tabs/7_email.php:17
+msgid "Category relations"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:12
+msgid "Chose which data type need add on Order Email"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:12
+msgid "Chose which data type need add on Order Page"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:86
+msgid "Continue shopping"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:45
+msgid "Customers often buy together with this product"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:105
+#: includes/options-tabs/4_cart-page.php:88
+#: includes/options-tabs/5_pop-up.php:83 includes/options-tabs/6_order.php:47
+#: includes/options-tabs/7_email.php:47
+msgid "Date"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:90
+msgid "Denied"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:5
+msgid "Email"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:11
+msgid "Enable Pop Up"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:10
+#: includes/options-tabs/4_cart-page.php:11
+msgid "Enable related products"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:12
+msgid ""
+"Enable\\Disable related products Pop up after click add to cart on Shop page"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:12
+msgid "Enable\\Disable related products section for Cart page"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:11
+msgid "Enable\\Disable related products section for product detail page"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:14
+msgid "Enable\\Disable tracing of user's search queries on website"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:35
+msgid "Enable\\Disable tracing of viewed products"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:63
+msgid "Full price: "
+msgstr ""
+
+#: includes/options-tabs/1_general.php:6
+msgid "General"
+msgstr ""
+
+#: includes/options-tabs/9_help.php:5
+msgid "Help"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://demo-up-sell-pro.5588.by/"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://veraksoff.info"
+msgstr ""
+
+#: includes/options-tabs/9_help.php:10
+msgid "Information"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:16
+msgid ""
+"It helps better understand what user looked for in shop before placing an "
+"order"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:17
+msgid ""
+"It helps to create mass relations between categories (for example: laptops->"
+"mouses, cases and etc.)"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:48
+msgid ""
+"It helps to create mass relations between tags (for example: electronics->"
+"cables, supplies and etc.)"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:14
+msgid ""
+"It shows Up-sell\\Cross-sell products after click Add to cart button and "
+"help suggest to user relevant products on Shop Page"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:14
+msgid ""
+"It shows Up-sell\\Cross-sell products for added to Cart items and help "
+"suggest to user relevant products on Cart Page"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:13
+msgid ""
+"It shows Up-sell\\Cross-sell products for current item and help suggest to "
+"user relevant products"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:13
+msgid ""
+"It shows Up-sell\\Cross-sell recommendation and search query in Order Email "
+"to help you suggest smartly additional products  if you call to customer to "
+"confirm the order"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:13
+msgid ""
+"It shows Up-sell\\Cross-sell recommendation and search query in Order Page "
+"to help you suggest smartly additional products  if you call to customer to "
+"confirm the order"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:22
+msgid "Keep queries"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:24
+msgid "Main category"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:55
+msgid "Main tag"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:106
+#: includes/options-tabs/4_cart-page.php:89
+#: includes/options-tabs/5_pop-up.php:84 includes/options-tabs/6_order.php:48
+#: includes/options-tabs/7_email.php:48
+msgid "Modified"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:103
+#: includes/options-tabs/4_cart-page.php:86
+#: includes/options-tabs/5_pop-up.php:81 includes/options-tabs/6_order.php:45
+#: includes/options-tabs/7_email.php:45
+msgid "Name"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:74
+#: includes/options-tabs/5_pop-up.php:69
+msgid "No"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:172
+#: app/classes/helpers/UpSellProHelper.php:215
+#: app/classes/views/UpSellProViewsEmail.php:71
+#: app/classes/views/UpSellProViewsEmail.php:78
+msgid "Nothing to show"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:4
+msgid "Order"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:100
+#: includes/options-tabs/4_cart-page.php:83
+#: includes/options-tabs/5_pop-up.php:78 includes/options-tabs/6_order.php:42
+#: includes/options-tabs/7_email.php:42
+msgid "Order by"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:28
+msgid "Place to put related products section for Cart page"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:26
+msgid "Place to put related products section for product detail page"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:5
+msgid "Pop Up"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:62
+msgid "Price description"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:210
+msgid "Price: "
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:277
+msgid "price: "
+msgstr ""
+
+#: app/classes/views/UpSellProViewsPopUp.php:85
+msgid "Product has been added to your cart"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:4
+msgid "Product Page"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:43
+msgid "Put link text here"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:55
+msgid "Put text for button here"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:64
+msgid "Put text here"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:46
+#: includes/options-tabs/4_cart-page.php:48
+#: includes/options-tabs/5_pop-up.php:34
+msgid "Put title text here"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:31 includes/options-tabs/7_email.php:31
+msgid "Quantity of items"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:32
+#: includes/options-tabs/4_cart-page.php:34
+#: includes/options-tabs/5_pop-up.php:20
+msgid "Quantity of Products"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:102
+#: includes/options-tabs/4_cart-page.php:85
+#: includes/options-tabs/5_pop-up.php:80 includes/options-tabs/6_order.php:44
+#: includes/options-tabs/7_email.php:44
+msgid "Random"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:236
+msgid "Related by Categories"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:235
+msgid "Related by Tags"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:32
+msgid "Related categories"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:63
+msgid "Related tags"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:8
+msgid "Relation"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:15
+msgid "Relation by categories"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:46
+msgid "Relation by tags"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:71
+#: includes/options-tabs/4_cart-page.php:55
+#: includes/options-tabs/5_pop-up.php:50
+msgid "Relation data"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:19
+#: includes/options-tabs/4_cart-page.php:20
+msgid "Relation place"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:315
+#: app/classes/views/UpSellProViewsCart.php:81
+#: app/classes/views/UpSellProViewsProduct.php:75
+#: app/classes/views/UpSellProViewsProduct.php:109
+msgid "Sale!"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:15 includes/options-tabs/7_email.php:15
+#: app/classes/helpers/UpSellProHelper.php:161
+#: app/classes/helpers/UpSellProHelper.php:238
+msgid "Search queries"
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:246
+msgid "Search queries: "
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:44
+#: includes/options-tabs/4_cart-page.php:46
+#: includes/options-tabs/5_pop-up.php:32
+msgid "Section title"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:33
+msgid "Select categories"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:26
+msgid "Select category"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:57
+msgid "Select tag"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:64
+msgid "Select tags"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:23
+msgid "Set up the number of latest search queries to keep"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:33
+msgid "Set up the number of related products for  current item"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:35
+msgid "Set up the number of related products for on Cart page"
+msgstr ""
+
+#: includes/options-tabs/7_email.php:32
+msgid ""
+"Set up the number of related products for Order Email for every data type"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:32
+msgid ""
+"Set up the number of related products for Order Page for every data type"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:21
+msgid "Set up the number of related products for Pop up"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:16
+msgid "Set up the relations between products categories"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:47
+msgid "Set up the relations between products tags"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:77
+#: includes/options-tabs/4_cart-page.php:61
+#: includes/options-tabs/5_pop-up.php:56
+msgid "Set up which data use for related products"
+msgstr ""
+
+#: up-sell-pro.php:54
+msgid ""
+"Sorry, Up Sell Pro plugin works only with Woocommerce plugin. Please, "
+"deactivate Up Sell Pro plugin or activate Woocommerce plugin"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:18 includes/options-tabs/7_email.php:18
+msgid "Tag relations"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:73
+#: includes/options-tabs/4_cart-page.php:57
+#: includes/options-tabs/5_pop-up.php:52
+msgid "Tags"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:104
+#: includes/options-tabs/4_cart-page.php:87
+#: includes/options-tabs/5_pop-up.php:82 includes/options-tabs/6_order.php:46
+#: includes/options-tabs/7_email.php:46
+msgid "Title"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:13
+msgid "Track search"
+msgstr ""
+
+#: includes/options-tabs/1_general.php:34
+msgid "Track viewed"
+msgstr ""
+
+#. Name of the plugin
+msgid "Up Sell Pro"
+msgstr ""
+
+#: app/classes/views/UpSellProViewsEmail.php:51
+msgid "Up Sell Pro Info"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Up Sell Pro is an easy and powerful plugin to set up upsell and cross-sell "
+"for your WooCommerce shop. This is up-selling, cross-selling plugin for "
+"WooCommerce helps you Increase revenue as well as profitability for your "
+"eCommerce website."
+msgstr ""
+
+#: app/classes/helpers/UpSellProHelper.php:298
+msgid "View cart"
+msgstr ""
+
+#: includes/options-tabs/3_product-page.php:75
+#: includes/options-tabs/4_cart-page.php:59
+#: includes/options-tabs/5_pop-up.php:54
+msgid "Viewed"
+msgstr ""
+
+#: includes/options-tabs/6_order.php:16 includes/options-tabs/7_email.php:16
+#: app/classes/helpers/UpSellProHelper.php:237
+msgid "Viewed products"
+msgstr ""
+
+#: includes/options-tabs/4_cart-page.php:73
+#: includes/options-tabs/5_pop-up.php:68
+msgid "Yes"
+msgstr ""
+
+#: includes/options-tabs/2_relation.php:78
+msgid "You can add up to 40 relations for every type"
+msgstr ""
+
+#: includes/options-tabs/5_pop-up.php:33
+msgid "You may also like"
+msgstr ""

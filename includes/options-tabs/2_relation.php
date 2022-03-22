@@ -5,7 +5,7 @@ $upSellIncreaseHelper = new UpSellProHelper();
 
 return [array(
 	'name'   => 'relation',
-	'title'  => 'Relation',
+	'title'  => esc_html__( 'Relation', 'up-sell-pro' ),
 	'icon'  => 'fas fa-sitemap',
 	'fields' => array(
 

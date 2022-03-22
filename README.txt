@@ -1,8 +1,8 @@
 === Up Sell Pro – Upsells & Cross Sells Woocommerce Plugin ===
 Contributors: AliceTheme
 Tags: up-sell, cross-sell
-Stable tag: 1.0.0
-Tested up to: 5.8
+Stable tag: 1.0.1
+Tested up to: 5.9
 Requires at least: 5.6
 Requires PHP: 7.1
 Donate link: https://veraksoff.info
@@ -41,6 +41,9 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 
 = 1.0.0 =
 * Initial Release
+
+= 1.0.1 =
+* Add Russian Language
 
 == Automatic installation ==
 

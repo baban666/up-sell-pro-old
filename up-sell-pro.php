@@ -21,6 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'UP_SELL_PRO_VERSION', '1.0.0' );
 define( 'UP_SELL_PRO_ROOT', plugin_dir_path( __FILE__ ) );
+define( 'UP_SELL_PRO_LANG', UP_SELL_PRO_ROOT . '/languages/up-sell-pro' );
 define( 'UP_SELL_PRO_URL', plugin_dir_url( __FILE__ ) );
 
 function activate_up_sell_pro() {

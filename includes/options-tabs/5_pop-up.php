@@ -2,7 +2,7 @@
 return [
 	array(
 		'name'   => 'pop',
-		'title'  => 'Pop Up',
+		'title'  => esc_html__( 'Pop Up', 'up-sell-pro' ),
 		'icon'   => 'far fa-object-group',
 		'fields' => array(
 			array(

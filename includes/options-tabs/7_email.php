@@ -2,7 +2,7 @@
 return [
 	array(
 		'name'   => 'email',
-		'title'  => 'Email',
+		'title'  => esc_html__( 'Email', 'up-sell-pro' ),
 		'icon'   => 'far fa-envelope',
 		'fields' => array(
 			array(

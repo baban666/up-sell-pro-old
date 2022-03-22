@@ -3,7 +3,7 @@
 
 return [array(
 	'name'   => 'general',
-	'title'  => 'General',
+	'title'  => esc_html__( 'General', 'up-sell-pro' ),
 	'icon'  => 'fa fa-wrench',
 	'fields' => array(
 

@@ -2,7 +2,7 @@
 return [
 	array(
 		'name'   => 'cart_page',
-		'title'  => 'Cart Page',
+		'title'  => esc_html__( 'Cart Page', 'up-sell-pro' ),
 		'icon'   => 'fas fa-shopping-cart',
 		'fields' => array(
 			array(

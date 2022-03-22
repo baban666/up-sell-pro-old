@@ -2,7 +2,7 @@
 return [
 	array(
 		'name'   => 'help',
-		'title'  => 'Help',
+		'title'  => esc_html__( 'Help', 'up-sell-pro' ),
 		'icon'   => 'far fa-life-ring',
 		'fields' => array(
 			array(

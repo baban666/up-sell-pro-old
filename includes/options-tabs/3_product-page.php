@@ -1,7 +1,7 @@
 <?php
 return [array(
 	'name'   => 'product_page',
-	'title'  => 'Product Page',
+	'title'  => esc_html__( 'Product Page', 'up-sell-pro' ),
 	'icon'   => 'fas fa-laptop',
 	'fields' => array(
 		array(

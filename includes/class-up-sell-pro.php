@@ -39,9 +39,9 @@ class Up_Sell_Pro {
 			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'up-sell-pro';
-
-		$this->load_dependencies();
 		$this->set_locale();
+		$this->load_dependencies();
+
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -55,11 +55,6 @@ class Up_Sell_Pro {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-up-sell-pro-loader.php';
 
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-up-sell-pro-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -69,7 +64,10 @@ class Up_Sell_Pro {
 		/**
 		 * The libs.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php';
+
+		if ( !class_exists( 'CSF' ) && file_exists( plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php' ) ) {
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php';
+		}
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -120,11 +118,7 @@ class Up_Sell_Pro {
 	}
 
 	private function set_locale() {
-
-		$plugin_i18n = new Up_Sell_Pro_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		load_textdomain( 'up-sell-pro', UP_SELL_PRO_LANG  . '-' . determine_locale() . '.mo' );
 	}
 
 	private function define_admin_hooks() {
