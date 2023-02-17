@@ -38,7 +38,7 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 		);
 	}
 
-	public function render() {
+	public function render($arguments = '') {
 		global $product, $post;
 		$args          = $this->getArgs();
 		$provider      = $this->dataProvider->getProvider( $args['type'] );

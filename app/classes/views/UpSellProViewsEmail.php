@@ -84,7 +84,7 @@ class UpSellProViewsEmail extends UpSellProViewItem {
 
 	}
 
-	public function render() {
+	public function render($arguments = '') {
 		add_action( 'woocommerce_email_customer_details', array( $this, 'renderRows' ), 90, 4 );
 	}
 }

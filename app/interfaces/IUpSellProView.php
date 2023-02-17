@@ -7,5 +7,5 @@ if ( ! defined( 'WPINC' ) ) {
 
 interface IUpSellProView {
 
-	public function render();
+	public function render($args);
 }

@@ -25,7 +25,7 @@ class UpSellProViewsProvider extends UpSellProView {
 		$this->render();
 	}
 
-	public function render() {
+	public function render($arguments = '') {
 		foreach ( $this->views as $key => $view ) {
 			$this->views[ $key ]->run();
 		}

@@ -38,7 +38,7 @@ class UpSellProViewsCart extends UpSellProViewItem {
 		);
 	}
 
-	public function render() {
+	public function render($arguments = '') {
 		global $woocommerce;
 		$items           = $woocommerce->cart->get_cart();
 		$cartProductsIds = [];

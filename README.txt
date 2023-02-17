@@ -47,6 +47,8 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 
 = 1.0.2 =
 * Fix small issues
+* Update demo and doc links
+* Add Upsell section on Thank you page
 
 == Automatic installation ==
 

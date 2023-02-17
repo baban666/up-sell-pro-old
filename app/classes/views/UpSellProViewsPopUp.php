@@ -64,7 +64,7 @@ class UpSellProViewsPopUp extends UpSellProViewItem {
 		);
 	}
 
-	public function render() {
+	public function render($arguments = '') {
 
 		if ( empty( $_POST['nonce'] ) ) {
 			wp_die( '0' );

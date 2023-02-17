@@ -101,7 +101,7 @@ class UpSellProViewsOrder extends UpSellProViewItem {
 	}
 
 
-	public function render() {
+	public function render($arguments = '') {
 		add_meta_box( 'up_sell_pro_info', esc_html( 'Up Sell Pro Info', 'up-sell-pro' ), array(
 			$this,
 			'renderTabs'

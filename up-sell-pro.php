@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Up Sell Pro
- * Plugin URI:        https://demo-up-sell-pro.5588.by/
+ * Plugin URI:        https://demo-up-sell-pro.first-design-company.com/
  * Description:       Up Sell Pro is an easy and powerful plugin to set up upsell and cross-sell for your WooCommerce shop. This is up-selling, cross-selling plugin for WooCommerce helps you Increase revenue as well as profitability for your eCommerce website.
  * Version:           1.0.2
  * Author:            AliceThemes

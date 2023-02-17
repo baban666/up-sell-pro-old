@@ -21,7 +21,7 @@ abstract class UpSellProView implements IUpSellProView {
 		$this->dataProvider = $dataProvider;
 	}
 
-	abstract function render();
+	abstract function render($args);
 
 	abstract function run();
 }

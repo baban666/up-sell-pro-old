@@ -21,7 +21,7 @@ abstract class UpSellProViewItem implements IUpSellProView {
 		$this->version      = $version;
 	}
 
-	abstract function render();
+	abstract function render($args);
 
 	abstract function run();
 }

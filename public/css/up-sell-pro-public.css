@@ -11,6 +11,9 @@
     z-index: 1000;
 
 }
+.popupS-layer .wp-element-button, .popupS-layer .wp-block-button__link {
+    display: block;
+}
 
 .popupS-resetFocus {
     border: 0;
@@ -363,6 +366,7 @@
     margin: 10px 0;
     display: inline-block;
     background: #ffffff;
+    color: inherit;
     cursor: pointer;
     font-size: 14px;
 }

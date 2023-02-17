@@ -19,6 +19,7 @@ use classes\views\UpSellProViewsOrder;
 use classes\views\UpSellProViewsPopUp;
 use classes\views\UpSellProViewsProduct;
 use classes\views\UpSellProViewsProvider;
+use classes\views\UpSellProViewsThankYouPage;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -107,6 +108,7 @@ class Up_Sell_Pro {
 			'cart'        => new UpSellProViewsCart($allSettings, $helper, $dataProvider, $this->version),
 			'email'        => new UpSellProViewsEmail($allSettings, $helper, $dataProvider, $this->version),
 			'order'        => new UpSellProViewsOrder($allSettings, $helper, $dataProvider, $this->version),
+			'thank'        => new UpSellProViewsThankYouPage($allSettings, $helper, $dataProvider, $this->version),
 		];
 		$viewsProvider = new UpSellProViewsProvider($allSettings, $helper, $views, $dataProvider);
 		$viewsProvider->run();
