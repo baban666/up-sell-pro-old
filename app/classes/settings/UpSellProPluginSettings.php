@@ -33,7 +33,7 @@ class UpSellProPluginSettings {
 				'menu_parent'     => '',
 				'sub_menu_title'  => '',
 				'theme'           => 'light',
-				'framework_title' => $title,
+				'framework_title' => 'Up Sell Pro<br><small>by <a href="https://first-design-company.com/" target="_blank">First Design Company</a></small>',
 			);
 			$this->setConfig( $settings );
 		}

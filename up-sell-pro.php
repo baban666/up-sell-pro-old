@@ -9,7 +9,7 @@
  * Author URI:        https://first-design-company.com/
  * Text Domain:       up-sell-pro
  * Domain Path:       /languages
- * Requires PHP: 7.0
+ * Requires PHP: 7.1
  * Tags: bulk crosssells, bulk upsells, cross-sells, crosssells, crosssells copy, mass crosssells, mass upsells, up-sells, upsells, woocommerce, woocommerce bulk up-sells and cross-sells, boost sales for woocommerce, marketing plugin, upsells popups, woocommerce display cross sells on product page
  */
 
