@@ -1,11 +1,11 @@
 === Up Sell Pro – Upsells & Cross Sells Woocommerce Plugin ===
 Contributors: AliceTheme
-Tags: up-sell, cross-sell
+Tags: up-sell, cross-sell, bulk upsells, bulk cross-sells
 Stable tag: 1.0.1
 Tested up to: 5.9
 Requires at least: 5.6
 Requires PHP: 7.1
-Donate link: https://veraksoff.info
+Donate link: https://first-design-company.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: bulk crosssells, bulk upsells, cross-sells, crosssells, crosssells copy, mass crosssells, mass upsells, up-sells, upsells, woocommerce, woocommerce bulk up-sells and cross-sells, boost sales for woocommerce, marketing plugin, upsells popups, woocommerce display cross sells on product page
@@ -13,8 +13,8 @@ Tags: bulk crosssells, bulk upsells, cross-sells, crosssells, crosssells copy, m
 Up Sell Pro is an easy and powerful plugin to set up upsell and cross-sell for your WooCommerce shop.
 
 == Description ==
-Demo: [demo-up-sell-pro](https://demo-up-sell-pro.5588.by/)
-Documentation: [doc-up-sell-pro](https://docs-up-sell-pro.5588.by/)
+Demo: [demo-up-sell-pro](https://demo-up-sell-pro.first-design-company.com/)
+Documentation: [doc-up-sell-pro](https://docs-up-sell-pro.first-design-company.com/)
 
 Up Sell Pro  - Upsells & Cross Sells Woocommerce Plugin
 
@@ -45,6 +45,9 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 = 1.0.1 =
 * Add Russian Language
 
+= 1.0.2 =
+* Fix small issues
+
 == Automatic installation ==
 
 Automatic installation is the easiest option -- WordPress will handles the file transfer, and you won’t need to leave your web browser. To do an automatic install of Up Sell Pro, log in to your WordPress dashboard, navigate to the Plugins menu, and click “Add New.”
@@ -64,7 +67,7 @@ In the search field type “Up Sell Pro” then click “Search Plugins.” Once
 
 = Where can I find Up Sell Pro documentation? =
 
-For help setting up and configuring, please refer to [doc-up-sell-pro](https://docs-up-sell-pro.5588.by/).
+For help setting up and configuring, please refer to [doc-up-sell-pro](https://docs-up-sell-pro.first-design-company.com/).
 
 == Upgrade Notice ==
 
