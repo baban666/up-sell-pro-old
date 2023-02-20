@@ -1,6 +1,7 @@
 <?php
 
 namespace classes\helpers;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }

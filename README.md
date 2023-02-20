@@ -1,7 +1,7 @@
 Up Sell Pro is an easy and powerful plugin to set up upsell and cross-sell for your WooCommerce shop.
 
 == Description ==
-Demo: [demo-up-sell-pro](https://demo-up-sell-pro.first-design-company.com/)
+Demo: [demo-up-sell-pro](https://up-sell-pro.first-design-company.com/)
 Documentation: [doc-up-sell-pro](https://docs-up-sell-pro.first-design-company.com/)
 
 Up Sell Pro  - Upsells & Cross Sells Woocommerce Plugin

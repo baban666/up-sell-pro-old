@@ -11,6 +11,7 @@ use classes\helpers\UpSellProHelper;
 use classes\settings\UpSellProPluginSettings;
 use classes\views\UpSellProViewsCart;
 use classes\views\UpSellProViewsEmail;
+use classes\views\UpSellProViewsGiftProduct;
 use classes\views\UpSellProViewsOrder;
 use classes\views\UpSellProViewsPopUp;
 use classes\views\UpSellProViewsProduct;
@@ -105,6 +106,7 @@ class Up_Sell_Pro {
 			'email'        => new UpSellProViewsEmail($allSettings, $helper, $dataProvider, $this->version),
 			'order'        => new UpSellProViewsOrder($allSettings, $helper, $dataProvider, $this->version),
 			'thank'        => new UpSellProViewsThankYouPage($allSettings, $helper, $dataProvider, $this->version),
+			'gift'        => new UpSellProViewsGiftProduct($allSettings, $helper, $dataProvider, $this->version),
 		];
 		$viewsProvider = new UpSellProViewsProvider($allSettings, $helper, $views, $dataProvider);
 		$viewsProvider->run();
@@ -117,6 +119,7 @@ class Up_Sell_Pro {
 
 	private function set_locale() {
 		load_textdomain( 'up-sell-pro', UP_SELL_PRO_LANG  . '-' . determine_locale() . '.mo' );
+
 	}
 
 	private function define_admin_hooks() {

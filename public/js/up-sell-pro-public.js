@@ -226,6 +226,21 @@
             }
         }
 
+//
+// Action Button Gift
+//
 
+        const actionButton = document.getElementById('up-sell-gift-action-btn');
+
+        const toggleActionButton = () => {
+            if (actionButton.classList.contains('actionsBoxOpen')) {
+                actionButton.classList.remove('actionsBoxOpen');
+            } else {
+                actionButton.classList.add('actionsBoxOpen');
+            }
+        }
+
+        actionButton.addEventListener('click', toggleActionButton);
     });
+
 })(jQuery);

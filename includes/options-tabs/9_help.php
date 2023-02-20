@@ -16,7 +16,7 @@ return [
                               <p><strong>'. esc_html__('Documentation', 'up-sell-pro').'</strong></p>
                               <p>'. esc_html__('Useful documentation you can find via link', 'up-sell-pro').' <a href="'. esc_url('https://docs-up-sell-pro.first-design-company.com/')  .'" target="_blank" >'. esc_html__('online documentation', 'up-sell-pro').'</a> </p>
                               <p><strong>'. esc_html__('Contact', 'up-sell-pro').'</strong></p>
-                              <p>'. esc_html__('Please ask any question via contact form in', 'up-sell-pro').' <a href="'. esc_url('https://first-design-company.com/contact/')  .'" target="_blank" >'. esc_html__('Website', 'up-sell-pro').'</a> </p>',
+                              <p>'. esc_html__('Please ask any question via contact form on', 'up-sell-pro').' <a href="'. esc_url('https://first-design-company.com/contact/')  .'" target="_blank" >'. esc_html__('Website', 'up-sell-pro').'</a> </p>',
 			),
 			// A Other products
 			array(
@@ -44,6 +44,18 @@ return [
 								<div class="card">
 								  <div class="image">
 								    <!-- You can add an image here using the <img> element -->
+								    <img src="'. esc_url(UP_SELL_PRO_URL . '/admin/img/lav.jpg')  .'" alt="Curie">
+								  </div>
+								  <div class="content">
+								    <h2 class="title">'. esc_html__('LavRel', 'up-sell-pro').'</h2>
+								    <p class="description">'. esc_html__('Religion & Church, Non-Profit Fast WordPress Theme', 'up-sell-pro').'</p>
+								    <a class="button" href="'. esc_url('https://lavrel.author-website.com/')  .'" target="_blank">'. esc_html__('Learn more', 'up-sell-pro').'</a>
+								  </div>
+								</div>
+								
+								<div class="card">
+								  <div class="image">
+								    <!-- You can add an image here using the <img> element -->
 								    <img src="'. esc_url(UP_SELL_PRO_URL . '/admin/img/pinkmilk.jpg')  .'" alt="Curie">
 								  </div>
 								  <div class="content">
@@ -60,22 +72,11 @@ return [
 								  </div>
 								  <div class="content">
 								    <h2 class="title">'. esc_html__('WellBook', 'up-sell-pro').'</h2>
-								    <p class="description">'. esc_html__('Useful and Fast WordPress Theme For Authors And Writers', 'up-sell-pro').'</p>
+								    <p class="description">'. esc_html__('WordPress Theme For Authors And Writers', 'up-sell-pro').'</p>
 								    <a class="button" href="'. esc_url('https://author-website.com/wellbook/')  .'" target="_blank">'. esc_html__('Learn more', 'up-sell-pro').'</a>
 								  </div>
 								</div>
 								
-								<div class="card">
-								  <div class="image">
-								    <!-- You can add an image here using the <img> element -->
-								    <img src="'. esc_url(UP_SELL_PRO_URL . '/admin/img/lav.jpg')  .'" alt="Curie">
-								  </div>
-								  <div class="content">
-								    <h2 class="title">'. esc_html__('LavRel', 'up-sell-pro').'</h2>
-								    <p class="description">'. esc_html__('Religion & Church, Non-Profit WordPress Theme', 'up-sell-pro').'</p>
-								    <a class="button" href="'. esc_url('https://lavrel.author-website.com/')  .'" target="_blank">'. esc_html__('Learn more', 'up-sell-pro').'</a>
-								  </div>
-								</div>
 								
 								<div class="card">
 								  <div class="image">
