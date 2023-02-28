@@ -39,7 +39,7 @@ class UpSellProViewsThankYouPage extends UpSellProViewItem {
 	public function render($order_id) {
 		//getting order object
 		$order            = wc_get_order( $order_id );
-		$order_items      = $order->get_items( array( 'line_item', 'fee', 'shipping' ) );
+		$order_items      = $order->get_items();
 
 		$orderProductsIds = [];
 

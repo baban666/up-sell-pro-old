@@ -44,7 +44,7 @@ class UpSellProViewsOrder extends UpSellProViewItem {
 		global $post;
 
 		$order            = wc_get_order( $post->ID );
-		$order_items      = $order->get_items( array( 'line_item', 'fee', 'shipping' ) );
+		$order_items      = $order->get_items();
 		$orderProductsIds = [];
 
 		if ( ! is_wp_error( $order_items ) ) {

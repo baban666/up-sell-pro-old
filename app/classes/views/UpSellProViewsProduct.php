@@ -102,8 +102,9 @@ class UpSellProViewsProduct extends UpSellProViewItem {
 						?>
                         <div class="card related-product related-product-id-<?php echo esc_attr( get_the_ID() ); ?>"
                              data-price="<?php echo $_product->get_price(); ?>">
-                            <input type="checkbox" checked data-id="<?php echo esc_attr( get_the_ID() ); ?>"
+                            <input id="up-sell-check-id-<?php echo esc_attr( get_the_ID() ); ?>"  type="checkbox" checked data-id="<?php echo esc_attr( get_the_ID() ); ?>"
                                    class="box">
+                            <label for="up-sell-check-id-<?php echo esc_attr( get_the_ID() ); ?>"></label>
 							<?php
 							if ( $_product->get_sale_price() ) {
 								echo apply_filters( 'woocommerce_sale_flash', '<span class="onsale">' . esc_html__( 'Sale!', 'up-sell-pro' ) . '</span>', $post, $_product );

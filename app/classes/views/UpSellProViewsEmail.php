@@ -36,7 +36,7 @@ class UpSellProViewsEmail extends UpSellProViewItem {
 			$order_id = method_exists( $order, 'get_id' ) ? $order->get_id() : $order->id;
 
 			$order            = wc_get_order( $order_id );
-			$order_items      = $order->get_items( array( 'line_item', 'fee', 'shipping' ) );
+			$order_items      = $order->get_items();
 			$orderProductsIds = [];
 
 			if ( ! is_wp_error( $order_items ) ) {
