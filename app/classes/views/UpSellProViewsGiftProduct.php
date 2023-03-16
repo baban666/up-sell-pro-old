@@ -128,7 +128,7 @@ class UpSellProViewsGiftProduct extends UpSellProViewItem {
 
 		$cartTotal = WC()->cart->cart_contents_total;
 		$giftValue = $this->settings['gift_product_value'];
-		var_dump($this->getTagColor($cartTotal, $giftValue));
+
 		if(empty($this->settings['gift_product_item']) || $cartTotal >= $giftValue){
 		    return;
         }

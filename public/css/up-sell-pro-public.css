@@ -223,6 +223,10 @@
     clear: both;
 }
 
+.up-sell-products a:hover {
+    text-decoration: none;
+}
+
 .popupS-content .up-sell-products {
     margin-bottom: 0;
 }
@@ -337,11 +341,18 @@
 }
 
 .popupS-content .wc-forward {
-    border: 1px solid #de1414;
+    border: 1px solid;
     padding: 3px 15px;
     margin: 10px 0;
     display: inline-block;
     font-size: 14px;
+    border-radius: 10px;
+
+}
+
+.popupS-content .up-sell-products .cards-list {
+    justify-content: center;
+
 }
 
 .popupS-title {
@@ -361,7 +372,7 @@
     margin: 10px 0;
 }
 .popupS-buttons button {
-    border: 1px solid #de1414;
+    border: 1px solid;
     padding: 5px 20px;
     margin: 10px 0;
     display: inline-block;
@@ -369,6 +380,7 @@
     color: inherit;
     cursor: pointer;
     font-size: 14px;
+    border-radius: 10px;
 }
 
 .popupS-title {
@@ -422,7 +434,7 @@
     background: linear-gradient(135deg, #0cebeb, #20e3b2, #29ffc6);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0.1em 0 0.25em rgba(0, 0, 0, 0.05), 0.2em 0 1em rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
 .action-button.red {
@@ -448,14 +460,14 @@
     position: absolute;
     z-index: 15;
     bottom: 2em;
-    right: 2em;
+    right: 1%;
     transform-origin: bottom right;
     transition: box-shadow 50ms ease-out, border-radius 50ms ease-out 25ms, width 90ms ease-in, height 60ms ease-in;
 }
 
 .action-button.left .action-button-content {
     right: unset;
-    left: 2em;
+    left: 1%;
     transform-origin: bottom left;
 }
 .action-button-content-inner {
@@ -513,7 +525,7 @@
     max-width: 400px;
     min-width: 300px;
     cursor: default;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border-radius: 0;
     bottom: 2em;
     right: 2em;
@@ -526,4 +538,10 @@
 }
 .actionsBoxOpen .action-button-content-inner .btn {
     pointer-events: auto;
+}
+
+
+.action-button-content-inner h2 {
+    font-size: 20px;
+    line-height: 30px;
 }

@@ -36,6 +36,7 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 * Viewed products section in Order Page
 * Up-sell \ Cross-sell section in Order Email
 * Viewed products section in Order Email
+* Gift product section section in product detail page
 
 == Changelog ==
 
@@ -49,6 +50,12 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 * Fix small issues
 * Update demo and doc links
 * Add Upsell section on Thank you page
+
+= 1.0.3 =
+* Fix bug on checkout page
+
+= 1.1.0 =
+* Add Gift product section
 
 == Automatic installation ==
 
