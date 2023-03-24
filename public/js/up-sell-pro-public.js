@@ -226,9 +226,9 @@
             }
         }
 
-//
-// Action Button Gift
-//
+    //
+    // Action Button Gift
+    //
 
         const actionButton = document.getElementById('up-sell-gift-action-btn');
 
@@ -239,8 +239,10 @@
                 actionButton.classList.add('actionsBoxOpen');
             }
         }
+        if(actionButton){
+            actionButton.addEventListener('click', toggleActionButton);
+        }
 
-        actionButton.addEventListener('click', toggleActionButton);
     });
 
 })(jQuery);

@@ -1,7 +1,7 @@
 === Up Sell Pro – Upsells & Cross Sells Woocommerce Plugin ===
 Contributors: AliceTheme
 Tags: up-sell, cross-sell, bulk upsells, bulk cross-sells
-Stable tag: 1.0.2
+Stable tag: 1.1.1
 Tested up to: 6.1
 Requires at least: 5.6
 Requires PHP: 7.1
@@ -36,7 +36,7 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 * Viewed products section in Order Page
 * Up-sell \ Cross-sell section in Order Email
 * Viewed products section in Order Email
-* Gift product section section in product detail page
+* Gift product section in product detail page
 
 == Changelog ==
 
@@ -56,6 +56,10 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 
 = 1.1.0 =
 * Add Gift product section
+
+= 1.1.1 =
+* Fix bug with gift variable
+* Fix js bug in console
 
 == Automatic installation ==
 

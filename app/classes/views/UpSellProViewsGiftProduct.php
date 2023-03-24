@@ -17,7 +17,7 @@ class UpSellProViewsGiftProduct extends UpSellProViewItem {
 
 	public function run() {
 
-		if ( $this->settings['gift_product_enable'] ) {
+		if ( !empty($this->settings['gift_product_enable'])  ) {
 			add_action( 'woocommerce_after_single_product', array( $this, 'render' ), 10 );
 			add_action( 'woocommerce_add_to_cart',  array( $this, 'addToCartAction' ), 20 );
 			add_action( 'woocommerce_update_cart_action_cart_updated',  array( $this, 'updateCartAction' ), 20 );
