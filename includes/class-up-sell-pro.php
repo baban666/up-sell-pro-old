@@ -12,6 +12,7 @@ use classes\settings\UpSellProPluginSettings;
 use classes\views\UpSellProViewsCart;
 use classes\views\UpSellProViewsEmail;
 use classes\views\UpSellProViewsGiftProduct;
+use classes\views\UpSellProViewsNewOrderEmail;
 use classes\views\UpSellProViewsOrder;
 use classes\views\UpSellProViewsPopUp;
 use classes\views\UpSellProViewsProduct;
@@ -63,7 +64,7 @@ class Up_Sell_Pro {
 		 * The libs.
 		 */
 
-		if ( !class_exists( 'CSF' ) && file_exists( plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php' ) ) {
+		if ( ! class_exists( 'CSF' ) && file_exists( plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php' ) ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libs/codestar-framework/codestar-framework.php';
 		}
 
@@ -84,31 +85,31 @@ class Up_Sell_Pro {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/default-options/default-options.php';
 
 
-
-		$allSettings = new UpSellProPluginSettings($this->plugin_name, 'Up Sell Pro', upSellProGetDefaultOptions());
+		$allSettings = new UpSellProPluginSettings( $this->plugin_name, 'Up Sell Pro', upSellProGetDefaultOptions() );
 		$allSettings->init();
 
 		$helper = new UpSellProHelper();
 
-		$providers = [
-			'tags'          => new UpSellProDataByTags($allSettings, $helper),
-			'categories'    => new UpSellProDataByCategories($allSettings, $helper),
-			'viewed'        => new UpSellProDataByViewed($allSettings, $helper),
-			'random'        => new UpSellProDataByRandom($allSettings, $helper),
-			'search'        => new UpSellProDataBySearch($allSettings, $helper),
+		$providers    = [
+			'tags'       => new UpSellProDataByTags( $allSettings, $helper ),
+			'categories' => new UpSellProDataByCategories( $allSettings, $helper ),
+			'viewed'     => new UpSellProDataByViewed( $allSettings, $helper ),
+			'random'     => new UpSellProDataByRandom( $allSettings, $helper ),
+			'search'     => new UpSellProDataBySearch( $allSettings, $helper ),
 		];
-		$dataProvider = new UpSellProDataProvider($allSettings, $helper, $providers);
+		$dataProvider = new UpSellProDataProvider( $allSettings, $helper, $providers );
 
-		$views = [
-			'pop'          => new UpSellProViewsPopUp($allSettings, $helper, $dataProvider, $this->version),
-			'product'      => new UpSellProViewsProduct($allSettings, $helper, $dataProvider, $this->version),
-			'cart'        => new UpSellProViewsCart($allSettings, $helper, $dataProvider, $this->version),
-			'email'        => new UpSellProViewsEmail($allSettings, $helper, $dataProvider, $this->version),
-			'order'        => new UpSellProViewsOrder($allSettings, $helper, $dataProvider, $this->version),
-			'thank'        => new UpSellProViewsThankYouPage($allSettings, $helper, $dataProvider, $this->version),
-			'gift'        => new UpSellProViewsGiftProduct($allSettings, $helper, $dataProvider, $this->version),
+		$views         = [
+			'pop'             => new UpSellProViewsPopUp( $allSettings, $helper, $dataProvider, $this->version ),
+			'product'         => new UpSellProViewsProduct( $allSettings, $helper, $dataProvider, $this->version ),
+			'cart'            => new UpSellProViewsCart( $allSettings, $helper, $dataProvider, $this->version ),
+			'email'           => new UpSellProViewsEmail( $allSettings, $helper, $dataProvider, $this->version ),
+			'order'           => new UpSellProViewsOrder( $allSettings, $helper, $dataProvider, $this->version ),
+			'thank'           => new UpSellProViewsThankYouPage( $allSettings, $helper, $dataProvider, $this->version ),
+			'gift'            => new UpSellProViewsGiftProduct( $allSettings, $helper, $dataProvider, $this->version ),
+			'new-order-email' => new UpSellProViewsNewOrderEmail( $allSettings, $helper, $dataProvider, $this->version ),
 		];
-		$viewsProvider = new UpSellProViewsProvider($allSettings, $helper, $views, $dataProvider);
+		$viewsProvider = new UpSellProViewsProvider( $allSettings, $helper, $views, $dataProvider );
 		$viewsProvider->run();
 
 		$this->loader = new Up_Sell_Pro_Loader();
@@ -118,7 +119,7 @@ class Up_Sell_Pro {
 	}
 
 	private function set_locale() {
-		load_textdomain( 'up-sell-pro', UP_SELL_PRO_LANG  . '-' . determine_locale() . '.mo' );
+		load_textdomain( 'up-sell-pro', UP_SELL_PRO_LANG . '-' . determine_locale() . '.mo' );
 
 	}
 

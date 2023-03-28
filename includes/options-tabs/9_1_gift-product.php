@@ -1,8 +1,5 @@
 <?php
 
-use classes\helpers\UpSellProHelper;
-
-$upSellIncreaseHelper = new UpSellProHelper();
 
 return [
 	array(
