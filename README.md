@@ -38,6 +38,19 @@ Also, Up Sell Pro Woocommerce Plugin allows you to show you which search queries
 * Update demo and doc links
 * Add Upsell section on Thank you page
 
+= 1.0.3 =
+* Fix bug on checkout page
+
+= 1.1.0 =
+* Add Gift product section
+
+= 1.1.1 =
+* Fix bug with gift variable
+* Fix js bug in console
+
+= 1.2.0 =
+* Add custom messages in new order email for client
+
 == Automatic installation ==
 
 Automatic installation is the easiest option -- WordPress will handles the file transfer, and you won’t need to leave your web browser. To do an automatic install of Up Sell Pro, log in to your WordPress dashboard, navigate to the Plugins menu, and click “Add New.”
